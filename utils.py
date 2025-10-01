@@ -70,7 +70,10 @@ def get_args():
 
     # Key hyperparameter
     parser.add_argument("--bucketing", type=int, default=0, help="[HP] s")
+    parser.add_argument("--nnm", action="store_true", help="Use Nearest Neighbor Mixing (NNM) pre-aggregation", default=False)
+    parser.add_argument("--lr", type=float, default=0.01, help="[HP] learning rate")
     parser.add_argument("--momentum", type=float, default=0.0, help="[HP] momentum")
+    parser.add_argument("--byz-nsgdm", action="store_true", help="Use Byz-NSGDM optimizer with normalized updates", default=False)
 
     parser.add_argument("--clip-tau", type=float, default=10.0, help="[HP] momentum")
     parser.add_argument("--clip-scaling", type=str, default=None, help="[HP] momentum")
@@ -102,9 +105,7 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/"
 DATA_DIR = ROOT_DIR + "datasets/"
 EXP_DIR = ROOT_DIR + f"outputs/"
 
-LR = 0.01
-# Fixed HPs
-BATCH_SIZE = 32
+BATCH_SIZE = 64
 TEST_BATCH_SIZE = 128
 
 
@@ -143,7 +144,6 @@ def bucketing_wrapper(args, aggregator, s):
     """
     Key functionality.
     """
-    print("Using bucketing wrapper.")
 
     def aggr(inputs):
         indices = list(range(len(inputs)))
@@ -161,12 +161,90 @@ def bucketing_wrapper(args, aggregator, s):
     return aggr
 
 
+def nnm_wrapper(args, aggregator):
+    """Nearest Neighbor Mixing: average n-f nearest neighbors for each input."""
+    import torch
+
+    def aggr(inputs):
+        n = len(inputs)
+        f = args.f
+        
+        if not isinstance(inputs[0], torch.Tensor):
+            inputs = [torch.tensor(inp) for inp in inputs]
+        
+        stacked_inputs = torch.stack(inputs)
+        mixed_inputs = []
+        
+        for i in range(n):
+            xi = stacked_inputs[i]
+            distances = torch.norm(stacked_inputs - xi.unsqueeze(0), dim=1)
+            _, sorted_indices = torch.sort(distances)
+            nearest_neighbors_indices = sorted_indices[:n-f]
+            yi = torch.mean(stacked_inputs[nearest_neighbors_indices], dim=0)
+            mixed_inputs.append(yi)
+        
+        return aggregator(mixed_inputs)
+
+    return aggr
+
+
+class ByzNSGDMOptimizer:
+    """Byz-NSGDM: Normalized SGD with Momentum and decreasing LR (lr = lr0 / sqrt(T+1))."""
+    
+    def __init__(self, base_optimizer, lr0):
+        self.base_optimizer = base_optimizer
+        self.lr0 = lr0
+        self.step_count = 0
+        
+    def step(self):
+        self.step_count += 1
+        current_lr = self.lr0 / (self.step_count ** 0.5)
+        
+        # Compute norm of aggregated gradient
+        total_grad_norm = 0.0
+        for group in self.base_optimizer.param_groups:
+            for p in group["params"]:
+                if p.grad is not None:
+                    total_grad_norm += p.grad.data.norm().item() ** 2
+        total_grad_norm = total_grad_norm ** 0.5
+        
+        # Normalize and scale by current learning rate
+        if total_grad_norm > 0:
+            for group in self.base_optimizer.param_groups:
+                for p in group["params"]:
+                    if p.grad is not None:
+                        p.grad.data = p.grad.data / total_grad_norm * current_lr
+        
+        # Apply step with lr=1.0 (already scaled gradients)
+        original_lr = self.base_optimizer.param_groups[0]['lr']
+        for group in self.base_optimizer.param_groups:
+            group['lr'] = 1.0
+        
+        self.base_optimizer.step()
+        
+        for group in self.base_optimizer.param_groups:
+            group['lr'] = original_lr
+            
+    def zero_grad(self):
+        self.base_optimizer.zero_grad()
+        
+    @property
+    def param_groups(self):
+        return self.base_optimizer.param_groups
+
+
 def get_aggregator(args):
     aggr = _get_aggregator(args)
-    if args.bucketing == 0:
-        return aggr
-
-    return bucketing_wrapper(args, aggr, args.bucketing)
+    
+    if args.nnm:
+        print("Applying NNM pre-aggregation.")
+        aggr = nnm_wrapper(args, aggr)
+    
+    if args.bucketing > 0:
+        print(f"Applying bucketing with s={args.bucketing}.")
+        aggr = bucketing_wrapper(args, aggr, args.bucketing)
+    
+    return aggr
 
 
 def get_sampler_callback(args, rank):
@@ -320,9 +398,14 @@ def main(args, LOG_DIR, EPOCHS, MAX_BATCHES_PER_EPOCH):
 
     model = Net().to(device)
 
-    # Each optimizer contains a separate `state` to store info like `momentum_buffer`
-    optimizers = [torch.optim.SGD(model.parameters(), lr=LR) for _ in range(args.n)]
-    server_opt = torch.optim.SGD(model.parameters(), lr=LR)
+    optimizers = [torch.optim.SGD(model.parameters(), lr=args.lr) for _ in range(args.n)]
+    base_server_opt = torch.optim.SGD(model.parameters(), lr=args.lr)
+    
+    if getattr(args, 'byz_nsgdm', False):
+        server_opt = ByzNSGDMOptimizer(base_server_opt, args.lr)
+        print("Using Byz-NSGDM optimizer.")
+    else:
+        server_opt = base_server_opt
 
     loss_func = F.nll_loss
 

@@ -1,0 +1,35 @@
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker BitFlippingWorker
+=> Add worker BitFlippingWorker
+=> Add worker BitFlippingWorker
+Train epoch 1
+[E 1B0  |    640/60000 (  1%) ] Loss: 2.3049 top1=  8.2812
+
+=> Eval Loss=2.0440 top1= 51.4824
+
+Train epoch 2
+[E 2B0  |    640/60000 (  1%) ] Loss: 2.0468 top1= 43.2812
+
+=> Eval Loss=1.1774 top1= 70.7332
+
+Train epoch 3
+[E 3B0  |    640/60000 (  1%) ] Loss: 1.2589 top1= 61.5625
+
+=> Eval Loss=0.8160 top1= 74.8598
+

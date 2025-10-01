@@ -236,8 +236,36 @@ function run_exp9 {
 }
 
 
+function run_exp10 {
+    COMMON_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --nnm --momentum 0.9 --lr 0.005"
+    for seed in 0
+    do
+        for agg in "rfa" "krum" "cm"
+        do
+            for atk in "BF" "LF" "mimic"
+            do
+                # Run Byz-NSGDM
+                # python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed --byz-nsgdm &
+                # pids[$!]=$!
+
+                # Run baseline (without --byz-nsgdm)
+                python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed &
+                pids[$!]=$!
+                
+            done
+
+            # wait for all pids
+            for pid in ${pids[*]}; do
+                wait $pid
+            done
+            unset pids
+        done
+    done
+}
+
+
 PS3='Please enter your choice: '
-options=("debug" "exp1" "exp1_plot" "exp2" "exp2_plot" "exp3" "exp3_plot" "exp4" "exp4_plot" "exp5" "exp5_plot" "exp6" "exp6_plot" "exp7" "exp7_plot" "exp8" "exp8_plot" "exp9" "exp9_plot" "Quit")
+options=("debug" "exp1" "exp1_plot" "exp2" "exp2_plot" "exp3" "exp3_plot" "exp4" "exp4_plot" "exp5" "exp5_plot" "exp6" "exp6_plot" "exp7" "exp7_plot" "exp8" "exp8_plot" "exp9" "exp9_plot" "exp10" "exp10_plot" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -321,6 +349,15 @@ do
             python exp9.py $COMMON_OPTIONS --attack "LF" --agg "rfa" --plot
             ;;
 
+        "exp10")
+            run_exp10
+            ;;
+
+        "exp10_plot")
+            COMMON_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --nnm --momentum 0.9 --lr 0.01"
+            # COMMON_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --bucketing 2 --momentum 0.9 --lr 0.01"
+            python exp10.py $COMMON_OPTIONS --plot
+            ;;
 
         "Quit")
             break
@@ -329,7 +366,8 @@ do
         "debug")
             # python exp1.py --use-cuda --debug --identifier "exp1_debug" -n 10 -f 0 --attack NA --LT --noniid --agg rfa
             # python exp2.py --use-cuda --identifier debug -n 25 -f 5 --attack mimic --agg cm --noniid --debug
-            python exp10.py --use-cuda -n 8 -f 0 --agg "avg" --seed 0 --momentum 0.9 #--debug
+            # python exp10.py --use-cuda -n 20 -f 3 --agg "rfa" --attack "BF" --seed 0 --momentum 0.9 --noniid --nnm --lr 0.01 --debug
+            python exp10.py --use-cuda -n 20 -f 3 --agg "rfa" --attack "BF" --seed 0 --momentum 0.9 --noniid --bucketing 2 --lr 0.01 --debug
             ;;
 
         *) 
