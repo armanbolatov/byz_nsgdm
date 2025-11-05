@@ -237,21 +237,97 @@ function run_exp9 {
 
 
 function run_exp10 {
-    COMMON_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --nnm --momentum 0.9 --lr 0.005"
-    for seed in 0
+    BASE_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --nnm --momentum 0.9"
+    for lr in 0.01 0.05 0.1 0.2 0.5 1.0
+    do
+        for seed in 0
+        do
+            for agg in "rfa" # "krum" "cm"
+            do
+                for atk in "BF" #"LF" "mimic"
+                do
+                    COMMON_OPTIONS="$BASE_OPTIONS --lr $lr"
+                    
+                    # Run Baseline
+                    # python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed &
+                    # pids[$!]=$!
+
+                    # Run Baseline with LR decay
+                    python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed --lr-decay &
+                    pids[$!]=$!
+
+                    # Run Byz-NSGDM
+                    # python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed --byz-nsgdm &
+                    # pids[$!]=$!
+                    
+                done
+
+                # wait for all pids
+                for pid in ${pids[*]}; do
+                    wait $pid
+                done
+                unset pids
+            done
+        done
+    done
+}
+
+
+function run_exp10_rerun {
+    # Best learning rates for each setup (adjust these based on your results)
+    # Format: agg_atk_optimizer=lr
+    declare -A best_lrs=(
+        ["rfa_BF_baseline"]=0.001
+        ["rfa_BF_lr_decay"]=0.01
+        ["rfa_BF_nsgdm"]=0.1
+        ["rfa_LF_baseline"]=0.01
+        ["rfa_LF_lr_decay"]=0.2
+        ["rfa_LF_nsgdm"]=0.5
+        ["rfa_mimic_baseline"]=0.005
+        ["rfa_mimic_lr_decay"]=0.05
+        ["rfa_mimic_nsgdm"]=0.1
+        ["krum_BF_baseline"]=0.001
+        ["krum_BF_lr_decay"]=0.005
+        ["krum_BF_nsgdm"]=0.1
+        ["krum_LF_baseline"]=0.01
+        ["krum_LF_lr_decay"]=0.2
+        ["krum_LF_nsgdm"]=1
+        ["krum_mimic_baseline"]=0.001
+        ["krum_mimic_lr_decay"]=0.05
+        ["krum_mimic_nsgdm"]=0.2
+        ["cm_BF_baseline"]=0.001
+        ["cm_BF_lr_decay"]=0.005
+        ["cm_BF_nsgdm"]=0.1
+        ["cm_LF_baseline"]=0.01
+        ["cm_LF_lr_decay"]=0.2
+        ["cm_LF_nsgdm"]=1
+        ["cm_mimic_baseline"]=0.001
+        ["cm_mimic_lr_decay"]=0.05
+        ["cm_mimic_nsgdm"]=0.1
+    )
+    
+    BASE_OPTIONS="--use-cuda --identifier all -n 20 -f 3 --noniid --nnm --momentum 0.9"
+    
+    for seed in 42 123
     do
         for agg in "rfa" "krum" "cm"
         do
             for atk in "BF" "LF" "mimic"
             do
-                # Run Byz-NSGDM
-                # python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed --byz-nsgdm &
-                # pids[$!]=$!
-
-                # Run baseline (without --byz-nsgdm)
-                python exp10.py $COMMON_OPTIONS --attack $atk --agg $agg --seed $seed &
+                # Run Baseline
+                lr=${best_lrs["${agg}_${atk}_baseline"]}
+                python exp10.py $BASE_OPTIONS --lr $lr --attack $atk --agg $agg --seed $seed &
                 pids[$!]=$!
-                
+
+                # Run Baseline with LR decay
+                lr=${best_lrs["${agg}_${atk}_lr_decay"]}
+                python exp10.py $BASE_OPTIONS --lr $lr --attack $atk --agg $agg --seed $seed --lr-decay &
+                pids[$!]=$!
+
+                # Run Byz-NSGDM
+                lr=${best_lrs["${agg}_${atk}_nsgdm"]}
+                python exp10.py $BASE_OPTIONS --lr $lr --attack $atk --agg $agg --seed $seed --byz-nsgdm &
+                pids[$!]=$!
             done
 
             # wait for all pids
@@ -265,7 +341,7 @@ function run_exp10 {
 
 
 PS3='Please enter your choice: '
-options=("debug" "exp1" "exp1_plot" "exp2" "exp2_plot" "exp3" "exp3_plot" "exp4" "exp4_plot" "exp5" "exp5_plot" "exp6" "exp6_plot" "exp7" "exp7_plot" "exp8" "exp8_plot" "exp9" "exp9_plot" "exp10" "exp10_plot" "Quit")
+options=("debug" "exp1" "exp1_plot" "exp2" "exp2_plot" "exp3" "exp3_plot" "exp4" "exp4_plot" "exp5" "exp5_plot" "exp6" "exp6_plot" "exp7" "exp7_plot" "exp8" "exp8_plot" "exp9" "exp9_plot" "exp10" "exp10_rerun" "exp10_plot" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -351,6 +427,10 @@ do
 
         "exp10")
             run_exp10
+            ;;
+
+        "exp10_rerun")
+            run_exp10_rerun
             ;;
 
         "exp10_plot")

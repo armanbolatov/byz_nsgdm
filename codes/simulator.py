@@ -91,6 +91,14 @@ class ParallelTrainer(DistributedSimulatorBase):
             try:
                 self._run_pre_batch_hooks(epoch, batch_idx)
                 results = self.parallel_get(lambda w: w.compute_gradient())
+                
+                # Check for NaN loss
+                for res in results:
+                    if np.isnan(res["loss"]) or np.isinf(res["loss"]):
+                        self.debug_logger.error(f"NaN or Inf loss detected at epoch {epoch}, batch {batch_idx}. Stopping training.")
+                        self.json_logger.error({"_meta": {"type": "train_error"}, "E": epoch, "B": batch_idx, "error": "NaN or Inf loss"})
+                        return  # Stop this run
+                
                 self.aggregation_and_update()
 
                 progress += sum(res["length"] for res in results)

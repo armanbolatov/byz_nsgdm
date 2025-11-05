@@ -74,6 +74,7 @@ def get_args():
     parser.add_argument("--lr", type=float, default=0.01, help="[HP] learning rate")
     parser.add_argument("--momentum", type=float, default=0.0, help="[HP] momentum")
     parser.add_argument("--byz-nsgdm", action="store_true", help="Use Byz-NSGDM optimizer with normalized updates", default=False)
+    parser.add_argument("--lr-decay", action="store_true", help="Use decreasing LR schedule (lr = lr0 / sqrt(T+1)) without normalization", default=False)
 
     parser.add_argument("--clip-tau", type=float, default=10.0, help="[HP] momentum")
     parser.add_argument("--clip-scaling", type=str, default=None, help="[HP] momentum")
@@ -224,6 +225,32 @@ class ByzNSGDMOptimizer:
         
         for group in self.base_optimizer.param_groups:
             group['lr'] = original_lr
+            
+    def zero_grad(self):
+        self.base_optimizer.zero_grad()
+        
+    @property
+    def param_groups(self):
+        return self.base_optimizer.param_groups
+
+
+class LRDecayOptimizer:
+    """Baseline with decreasing LR (lr = lr0 / sqrt(T+1)) but no normalization."""
+    
+    def __init__(self, base_optimizer, lr0):
+        self.base_optimizer = base_optimizer
+        self.lr0 = lr0
+        self.step_count = 0
+        
+    def step(self):
+        self.step_count += 1
+        current_lr = self.lr0 / (self.step_count ** 0.5)
+        
+        # Update learning rate without normalization
+        for group in self.base_optimizer.param_groups:
+            group['lr'] = current_lr
+        
+        self.base_optimizer.step()
             
     def zero_grad(self):
         self.base_optimizer.zero_grad()
@@ -404,6 +431,9 @@ def main(args, LOG_DIR, EPOCHS, MAX_BATCHES_PER_EPOCH):
     if getattr(args, 'byz_nsgdm', False):
         server_opt = ByzNSGDMOptimizer(base_server_opt, args.lr)
         print("Using Byz-NSGDM optimizer.")
+    elif getattr(args, 'lr_decay', False):
+        server_opt = LRDecayOptimizer(base_server_opt, args.lr)
+        print("Using LR decay optimizer (no normalization).")
     else:
         server_opt = base_server_opt
 

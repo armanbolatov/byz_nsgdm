@@ -40,7 +40,7 @@ INP_DIR = LOG_DIR
 OUT_DIR = LOG_DIR + "output/"
 
 # Directory name includes optimizer, preprocessing method, and learning rate
-opt_suffix = "_nsgdm" if getattr(args, 'byz_nsgdm', False) else "_baseline"
+opt_suffix = "_nsgdm" if getattr(args, 'byz_nsgdm', False) else ("_lr_decay" if getattr(args, 'lr_decay', False) else "_baseline")
 preprocess_suffix = "nnm" if args.nnm else f"s{args.bucketing}"
 lr_str = f"lr{args.lr}".replace(".", "p")
 LOG_DIR += f"{args.agg}_{args.attack}_{preprocess_suffix}_{lr_str}_seed{args.seed}{opt_suffix}"
@@ -53,7 +53,13 @@ else:
     EPOCHS = 50
 
 if not args.plot:
-    main(args, LOG_DIR, EPOCHS, MAX_BATCHES_PER_EPOCH)
+    # Skip if results already exist
+    import os
+    stats_path = os.path.join(LOG_DIR, "stats")
+    if os.path.exists(stats_path) and os.path.isfile(stats_path) and os.path.getsize(stats_path) > 0:
+        print(f"Skipping: Results already exist at {stats_path}")
+    else:
+        main(args, LOG_DIR, EPOCHS, MAX_BATCHES_PER_EPOCH)
 else:
     import os
     import pandas as pd
@@ -73,7 +79,7 @@ else:
             full_path = os.path.join(INP_DIR, name)
             if not os.path.isdir(full_path):
                 continue
-            m = re.match(r"^(rfa|krum|cm)_(BF|LF|mimic)_(nnm|s\d+)_lr([\dp\.]+)_seed(\d+)_(baseline|nsgdm)$", name)
+            m = re.match(r"^(rfa|krum|cm)_(BF|LF|mimic)_(nnm|s\d+)_lr([\dp\.]+)_seed(\d+)_(baseline|lr_decay|nsgdm)$", name)
             if not m:
                 continue
             agg, attack, preprocess, lr_txt, seed_txt, opt_tag = m.groups()
@@ -101,13 +107,14 @@ else:
         try:
             values = extract_validation_entries(path)
             for v in values:
+                opt_label = "Byz-NSGDM" if entry["optimizer_tag"] == "nsgdm" else ("Baseline-Decay" if entry["optimizer_tag"] == "lr_decay" else "Baseline")
                 results.append(
                     {
                         "Iterations": v["E"] * MAX_BATCHES_PER_EPOCH,
                         "Accuracy (%)": v["top1"],
                         "Attack": entry["attack"],
                         "Aggregator": entry["agg"].upper(),
-                        "Optimizer": "Byz-NSGDM" if entry["optimizer_tag"] == "nsgdm" else "Baseline",
+                        "Optimizer": opt_label,
                         "seed": entry["seed"],
                         "LR": entry["lr"],
                     }
@@ -138,18 +145,18 @@ else:
         
         # 3x3 plot: one subplot per attack-aggregator combination
         fig, axes = plt.subplots(3, 3, figsize=(15, 12))
-        fig.suptitle("Byz-NSGDM vs Baseline (best LR per setup)", fontsize=16, y=0.98)
+        fig.suptitle("Baseline vs Baseline-Decay vs Byz-NSGDM (best LR per setup)", fontsize=16, y=0.98)
         
         attacks = ["BF", "LF", "mimic"]
         aggregators = ["RFA", "KRUM", "CM"]
-        colors = {"Baseline": "#1f77b4", "Byz-NSGDM": "#ff7f0e"}
+        colors = {"Baseline": "#1f77b4", "Baseline-Decay": "#2ca02c", "Byz-NSGDM": "#ff7f0e"}
         
         for i, attack in enumerate(attacks):
             for j, agg in enumerate(aggregators):
                 ax = axes[i, j]
                 subset = df[(df["Attack"] == attack) & (df["Aggregator"] == agg.upper())]
                 if len(subset) > 0:
-                    for optimizer in ["Baseline", "Byz-NSGDM"]:
+                    for optimizer in ["Baseline", "Baseline-Decay", "Byz-NSGDM"]:
                         opt_sub = subset[subset["Optimizer"] == optimizer]
                         key = (attack, agg.upper(), optimizer)
                         if key not in best_lr_map:
@@ -167,7 +174,7 @@ else:
                 else:
                     ax.text(0.5, 0.5, "No Data", transform=ax.transAxes, ha="center", va="center", fontsize=12, alpha=0.5)
                 ax.set_xlim(0, MAX_BATCHES_PER_EPOCH * EPOCHS)
-                ax.set_ylim(0, 100)
+                ax.set_ylim(40, 100)
                 ax.grid(True, alpha=0.3)
                 ax.set_title(f"{attack} + {agg}", fontsize=10, fontweight='bold')
                 if i == 2:
