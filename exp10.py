@@ -145,7 +145,6 @@ else:
         
         # 3x3 plot: one subplot per attack-aggregator combination
         fig, axes = plt.subplots(3, 3, figsize=(15, 12))
-        fig.suptitle("Baseline vs Baseline-Decay vs Byz-NSGDM (best LR per setup)", fontsize=16, y=0.98)
         
         attacks = ["BF", "LF", "mimic"]
         aggregators = ["RFA", "KRUM", "CM"]
