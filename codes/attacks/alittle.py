@@ -1,28 +1,26 @@
 import torch
 import torch.distributed as dist
 import numpy as np
-from scipy.stats import norm
 
 from codes.worker import ByzantineWorker
 
 
 class ALittleIsEnoughAttack(ByzantineWorker):
-    """
+    """ALIE (A Little Is Enough) attack.
+
+    Byzantine workers send v_i = mean - z * std,
+    where std is the coordinate-wise standard deviation of good
+    workers' gradients.
+
     Args:
         n (int): Total number of workers
         m (int): Number of Byzantine workers
+        z (float): Scaling factor (default 1.0)
     """
 
-    def __init__(self, n, m, z=None, *args, **kwargs):
+    def __init__(self, n, m, z=1.0, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Number of supporters
-        if z is not None:
-            self.z_max = z
-        else:
-            s = np.floor(n / 2 + 1) - m
-            cdf_value = (n - m - s) / (n - m)
-            self.z_max = norm.ppf(cdf_value)
-        self.n_good = n - m
+        self.z = z
 
     def get_gradient(self):
         return self._gradient
@@ -38,7 +36,8 @@ class ALittleIsEnoughAttack(ByzantineWorker):
         mu = torch.mean(stacked_gradients, 1)
         std = torch.std(stacked_gradients, 1)
 
-        self._gradient = mu - std * self.z_max
+        # ALIE: v_i = mean - z * std
+        self._gradient = mu - self.z * std
 
     def set_gradient(self, gradient) -> None:
         raise NotImplementedError

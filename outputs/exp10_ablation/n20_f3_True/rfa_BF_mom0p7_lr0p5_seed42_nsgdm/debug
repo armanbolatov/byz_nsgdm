@@ -1,0 +1,160 @@
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker TorchWorker
+=> Add worker BitFlippingWorker
+=> Add worker BitFlippingWorker
+=> Add worker BitFlippingWorker
+Train epoch 1
+[E 1B0  |   1280/60000 (  2%) ] Loss: 2.3178 top1=  6.3281
+[E 1B10 |  14080/60000 ( 23%) ] Loss: 1.1139 top1= 64.9219
+[E 1B20 |  26880/60000 ( 45%) ] Loss: 1.5213 top1= 73.4375
+
+=> Eval Loss=2.5260 top1= 78.9263
+
+Train epoch 2
+[E 2B0  |   1280/60000 (  2%) ] Loss: 2.6285 top1= 77.0312
+[E 2B10 |  14080/60000 ( 23%) ] Loss: 3.9995 top1= 80.0000
+[E 2B20 |  26880/60000 ( 45%) ] Loss: 9.8288 top1= 78.5156
+
+=> Eval Loss=17.5308 top1= 81.0497
+
+Train epoch 3
+[E 3B0  |   1280/60000 (  2%) ] Loss: 17.8715 top1= 77.3438
+[E 3B10 |  14080/60000 ( 23%) ] Loss: 30.7903 top1= 75.1562
+[E 3B20 |  26880/60000 ( 45%) ] Loss: 53.2392 top1= 78.9844
+
+=> Eval Loss=75.2648 top1= 81.0497
+
+Train epoch 4
+[E 4B0  |   1280/60000 (  2%) ] Loss: 80.5766 top1= 75.8594
+[E 4B10 |  14080/60000 ( 23%) ] Loss: 110.7910 top1= 74.1406
+[E 4B20 |  26880/60000 ( 45%) ] Loss: 141.3058 top1= 74.6875
+
+=> Eval Loss=170.9476 top1= 74.1687
+
+Train epoch 5
+[E 5B0  |   1280/60000 (  2%) ] Loss: 196.6186 top1= 72.5000
+[E 5B10 |  14080/60000 ( 23%) ] Loss: 201.3786 top1= 72.8906
+[E 5B20 |  26880/60000 ( 45%) ] Loss: 261.6073 top1= 64.5312
+
+=> Eval Loss=301.9361 top1= 74.6394
+
+Train epoch 6
+[E 6B0  |   1280/60000 (  2%) ] Loss: 331.9305 top1= 71.6406
+[E 6B10 |  14080/60000 ( 23%) ] Loss: 387.1573 top1= 71.7188
+[E 6B20 |  26880/60000 ( 45%) ] Loss: 439.3990 top1= 71.6406
+
+=> Eval Loss=493.1796 top1= 79.8678
+
+Train epoch 7
+[E 7B0  |   1280/60000 (  2%) ] Loss: 503.7496 top1= 75.3125
+[E 7B10 |  14080/60000 ( 23%) ] Loss: 573.1436 top1= 71.0156
+[E 7B20 |  26880/60000 ( 45%) ] Loss: 640.3979 top1= 73.2812
+
+=> Eval Loss=726.8899 top1= 74.0284
+
+Train epoch 8
+[E 8B0  |   1280/60000 (  2%) ] Loss: 786.0849 top1= 69.1406
+[E 8B10 |  14080/60000 ( 23%) ] Loss: 901.1941 top1= 64.3750
+[E 8B20 |  26880/60000 ( 45%) ] Loss: 1024.8163 top1= 69.3750
+
+=> Eval Loss=1004.5104 top1= 70.1923
+
+Train epoch 9
+[E 9B0  |   1280/60000 (  2%) ] Loss: 1056.4007 top1= 66.5625
+[E 9B10 |  14080/60000 ( 23%) ] Loss: 1097.2048 top1= 69.8438
+[E 9B20 |  26880/60000 ( 45%) ] Loss: 1211.1329 top1= 65.8594
+
+=> Eval Loss=1330.9919 top1= 81.9411
+
+Train epoch 10
+[E10B0  |   1280/60000 (  2%) ] Loss: 1389.7921 top1= 75.4688
+[E10B10 |  14080/60000 ( 23%) ] Loss: 1625.1900 top1= 71.1719
+[E10B20 |  26880/60000 ( 45%) ] Loss: 1546.7480 top1= 73.2812
+
+=> Eval Loss=1720.3499 top1= 74.2989
+
+Train epoch 11
+[E11B0  |   1280/60000 (  2%) ] Loss: 1797.4934 top1= 68.4375
+[E11B10 |  14080/60000 ( 23%) ] Loss: 1891.3594 top1= 68.2812
+[E11B20 |  26880/60000 ( 45%) ] Loss: 2179.7846 top1= 63.2031
+
+=> Eval Loss=2111.0880 top1= 78.7059
+
+Train epoch 12
+[E12B0  |   1280/60000 (  2%) ] Loss: 2302.5882 top1= 71.7969
+[E12B10 |  14080/60000 ( 23%) ] Loss: 2555.8509 top1= 75.5469
+[E12B20 |  26880/60000 ( 45%) ] Loss: 2421.5495 top1= 75.2344
+
+=> Eval Loss=2609.9303 top1= 80.1282
+
+Train epoch 13
+[E13B0  |   1280/60000 (  2%) ] Loss: 2818.1444 top1= 73.4375
+[E13B10 |  14080/60000 ( 23%) ] Loss: 2958.2599 top1= 68.5938
+[E13B20 |  26880/60000 ( 45%) ] Loss: 3239.5303 top1= 69.2188
+
+=> Eval Loss=3090.4708 top1= 67.8786
+
+Train epoch 14
+[E14B0  |   1280/60000 (  2%) ] Loss: 3079.5769 top1= 62.8125
+[E14B10 |  14080/60000 ( 23%) ] Loss: 3482.7589 top1= 70.6250
+[E14B20 |  26880/60000 ( 45%) ] Loss: 3697.0286 top1= 69.4531
+
+=> Eval Loss=3621.3870 top1= 80.6190
+
+Train epoch 15
+[E15B0  |   1280/60000 (  2%) ] Loss: 3865.6533 top1= 74.3750
+[E15B10 |  14080/60000 ( 23%) ] Loss: 4677.6145 top1= 68.6719
+[E15B20 |  26880/60000 ( 45%) ] Loss: 4372.3795 top1= 65.2344
+
+=> Eval Loss=4175.0268 top1= 82.4619
+
+Train epoch 16
+[E16B0  |   1280/60000 (  2%) ] Loss: 4769.4670 top1= 75.4688
+[E16B10 |  14080/60000 ( 23%) ] Loss: 4576.0379 top1= 62.6562
+[E16B20 |  26880/60000 ( 45%) ] Loss: 4632.8359 top1= 62.0312
+
+=> Eval Loss=4803.7741 top1= 65.6350
+
+Train epoch 17
+[E17B0  |   1280/60000 (  2%) ] Loss: 5638.9906 top1= 63.5156
+[E17B10 |  14080/60000 ( 23%) ] Loss: 5465.8870 top1= 67.1094
+[E17B20 |  26880/60000 ( 45%) ] Loss: 5947.3371 top1= 69.5312
+
+=> Eval Loss=5434.2198 top1= 68.9503
+
+Train epoch 18
+[E18B0  |   1280/60000 (  2%) ] Loss: 6360.4267 top1= 65.3125
+[E18B10 |  14080/60000 ( 23%) ] Loss: 5852.5186 top1= 71.3281
+[E18B20 |  26880/60000 ( 45%) ] Loss: 6520.3913 top1= 72.9688
+
+=> Eval Loss=6105.2018 top1= 76.3221
+
+Train epoch 19
+[E19B0  |   1280/60000 (  2%) ] Loss: 6116.5901 top1= 72.0312
+[E19B10 |  14080/60000 ( 23%) ] Loss: 7267.1898 top1= 69.1406
+[E19B20 |  26880/60000 ( 45%) ] Loss: 6916.3566 top1= 64.9219
+
+=> Eval Loss=6804.5479 top1= 68.2692
+
+Train epoch 20
+[E20B0  |   1280/60000 (  2%) ] Loss: 7866.3833 top1= 64.5312
+[E20B10 |  14080/60000 ( 23%) ] Loss: 7597.7339 top1= 70.0781
+[E20B20 |  26880/60000 ( 45%) ] Loss: 8651.0906 top1= 65.7812
+
+=> Eval Loss=7637.5552 top1= 74.5693
+

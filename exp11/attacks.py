@@ -36,21 +36,23 @@ class MimicAttack:
 
 
 class ALIEAttack:
-    """ALIE attack: maximize damage while avoiding outlier detection"""
-    
-    def __init__(self, n_total=20, f_byzantine=3):
+    """ALIE attack: v_i = mean - z * std"""
+
+    def __init__(self, n_total=20, f_byzantine=3, z=1.0):
         self.n_total = n_total
         self.f_byzantine = f_byzantine
+        self.z = z
         self.name = "ALIE"
-    
+
     def attack(self, honest_gradient, honest_gradients=None, iteration=0):
         if honest_gradients is None:
             honest_gradients = [honest_gradient]
-        
-        honest_avg = np.mean(honest_gradients)
-        deviation_factor = self.f_byzantine / (self.n_total - self.f_byzantine)
-        malicious_gradient = honest_avg - 2 * honest_avg * deviation_factor
-        
+
+        stacked = np.array(honest_gradients)
+        mu = np.mean(stacked, axis=0)
+        std = np.std(stacked, axis=0)
+        malicious_gradient = mu - self.z * std
+
         return malicious_gradient
 
 

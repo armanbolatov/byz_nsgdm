@@ -150,10 +150,11 @@ class LMMimicWorker(LMByzantineWorker):
 
 
 class LMALIEWorker(LMByzantineWorker):
-    def __init__(self, n: int, m: int, *args, **kwargs):
+    """ALIE: v_i = mean - z * std."""
+
+    def __init__(self, n: int, m: int, z: float = 1.0, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.n = n
-        self.m = m
+        self.z = z
         self.attack_gradient = None
 
     def get_gradient(self) -> torch.Tensor:
@@ -168,10 +169,10 @@ class LMALIEWorker(LMByzantineWorker):
                 honest_grads.append(w.get_gradient())
         if honest_grads:
             stacked = torch.stack(honest_grads)
-            mean_grad = stacked.mean(dim=0)
-            # ALIE: shift by factor based on Byzantine fraction
-            factor = 2.0 * self.m / (self.n - self.m)
-            self.attack_gradient = mean_grad - factor * mean_grad
+            mu = stacked.mean(dim=0)
+            std = stacked.std(dim=0)
+            # ALIE: v_i = mean - z * std
+            self.attack_gradient = mu - self.z * std
 
     def __str__(self) -> str:
         return "LMALIEWorker"

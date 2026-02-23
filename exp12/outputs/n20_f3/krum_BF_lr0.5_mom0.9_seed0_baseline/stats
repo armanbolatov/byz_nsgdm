@@ -1,0 +1,5 @@
+{'_meta': {'type': 'train'}, 'E': 1, 'B': 0, 'Length': 1280, 'Loss': 4.192143988609314, 'perplexity': 66.16495056370448}
+{'_meta': {'type': 'validation'}, 'E': 1, 'val_loss': np.float64(7.00307559967041), 'val_ppl': 1100.0111550289039}
+{'_meta': {'type': 'train'}, 'E': 2, 'B': 0, 'Length': 1280, 'Loss': 7.011071443557739, 'perplexity': 1110.117973160622}
+{'_meta': {'type': 'validation'}, 'E': 2, 'val_loss': np.float64(87.83703104654948), 'val_ppl': 1.4032591743880882e+38}
+{'_meta': {'type': 'train'}, 'E': 3, 'B': 0, 'Length': 1280, 'Loss': 87.57171440124512, 'perplexity': 485165195.40979016}

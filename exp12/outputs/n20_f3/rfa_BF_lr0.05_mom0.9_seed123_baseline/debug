@@ -1,0 +1,220 @@
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMWorker
+=> Add worker LMBitFlippingWorker
+=> Add worker LMBitFlippingWorker
+=> Add worker LMBitFlippingWorker
+Train epoch 1
+[E 1B0  |   1280/7842 ( 16%) ] Loss: 4.1720 perplexity= 64.8448
+Train epoch 2
+[E 2B0  |   1280/7842 ( 16%) ] Loss: 3.3749 perplexity= 29.2366
+Train epoch 3
+[E 3B0  |   1280/7842 ( 16%) ] Loss: 3.3228 perplexity= 27.7583
+Train epoch 4
+[E 4B0  |   1280/7842 ( 16%) ] Loss: 3.3253 perplexity= 27.8225
+Train epoch 5
+[E 5B0  |   1280/7842 ( 16%) ] Loss: 3.3080 perplexity= 27.3423
+Train epoch 6
+[E 6B0  |   1280/7842 ( 16%) ] Loss: 3.3002 perplexity= 27.1274
+Train epoch 7
+[E 7B0  |   1280/7842 ( 16%) ] Loss: 3.2772 perplexity= 26.5075
+Train epoch 8
+[E 8B0  |   1280/7842 ( 16%) ] Loss: 3.2363 perplexity= 25.4455
+Train epoch 9
+[E 9B0  |   1280/7842 ( 16%) ] Loss: 3.5680 perplexity= 35.5278
+Train epoch 10
+[E10B0  |   1280/7842 ( 16%) ] Loss: 3.3672 perplexity= 29.0128
+Train epoch 11
+[E11B0  |   1280/7842 ( 16%) ] Loss: 3.3405 perplexity= 28.2488
+Train epoch 12
+[E12B0  |   1280/7842 ( 16%) ] Loss: 3.3080 perplexity= 27.3459
+Train epoch 13
+[E13B0  |   1280/7842 ( 16%) ] Loss: 3.2873 perplexity= 26.7850
+Train epoch 14
+[E14B0  |   1280/7842 ( 16%) ] Loss: 3.2758 perplexity= 26.4710
+Train epoch 15
+[E15B0  |   1280/7842 ( 16%) ] Loss: 3.2027 perplexity= 24.6030
+Train epoch 16
+[E16B0  |   1280/7842 ( 16%) ] Loss: 3.1723 perplexity= 23.8647
+Train epoch 17
+[E17B0  |   1280/7842 ( 16%) ] Loss: 3.1435 perplexity= 23.1888
+Train epoch 18
+[E18B0  |   1280/7842 ( 16%) ] Loss: 3.1406 perplexity= 23.1206
+Train epoch 19
+[E19B0  |   1280/7842 ( 16%) ] Loss: 3.1332 perplexity= 22.9482
+Train epoch 20
+[E20B0  |   1280/7842 ( 16%) ] Loss: 3.1229 perplexity= 22.7128
+Train epoch 21
+[E21B0  |   1280/7842 ( 16%) ] Loss: 3.1144 perplexity= 22.5219
+Train epoch 22
+[E22B0  |   1280/7842 ( 16%) ] Loss: 3.1045 perplexity= 22.3001
+Train epoch 23
+[E23B0  |   1280/7842 ( 16%) ] Loss: 3.1043 perplexity= 22.2957
+Train epoch 24
+[E24B0  |   1280/7842 ( 16%) ] Loss: 3.0962 perplexity= 22.1145
+Train epoch 25
+[E25B0  |   1280/7842 ( 16%) ] Loss: 3.0932 perplexity= 22.0487
+Train epoch 26
+[E26B0  |   1280/7842 ( 16%) ] Loss: 3.0847 perplexity= 21.8617
+Train epoch 27
+[E27B0  |   1280/7842 ( 16%) ] Loss: 3.0824 perplexity= 21.8126
+Train epoch 28
+[E28B0  |   1280/7842 ( 16%) ] Loss: 3.0755 perplexity= 21.6623
+Train epoch 29
+[E29B0  |   1280/7842 ( 16%) ] Loss: 3.0644 perplexity= 21.4244
+Train epoch 30
+[E30B0  |   1280/7842 ( 16%) ] Loss: 3.0497 perplexity= 21.1112
+Train epoch 31
+[E31B0  |   1280/7842 ( 16%) ] Loss: 3.0323 perplexity= 20.7487
+Train epoch 32
+[E32B0  |   1280/7842 ( 16%) ] Loss: 3.0103 perplexity= 20.2966
+Train epoch 33
+[E33B0  |   1280/7842 ( 16%) ] Loss: 2.9970 perplexity= 20.0305
+Train epoch 34
+[E34B0  |   1280/7842 ( 16%) ] Loss: 2.9749 perplexity= 19.5917
+Train epoch 35
+[E35B0  |   1280/7842 ( 16%) ] Loss: 2.9577 perplexity= 19.2555
+Train epoch 36
+[E36B0  |   1280/7842 ( 16%) ] Loss: 2.9272 perplexity= 18.6786
+Train epoch 37
+[E37B0  |   1280/7842 ( 16%) ] Loss: 2.9096 perplexity= 18.3516
+Train epoch 38
+[E38B0  |   1280/7842 ( 16%) ] Loss: 2.8924 perplexity= 18.0376
+Train epoch 39
+[E39B0  |   1280/7842 ( 16%) ] Loss: 2.8795 perplexity= 17.8080
+Train epoch 40
+[E40B0  |   1280/7842 ( 16%) ] Loss: 2.8687 perplexity= 17.6161
+Train epoch 41
+[E41B0  |   1280/7842 ( 16%) ] Loss: 2.8539 perplexity= 17.3565
+Train epoch 42
+[E42B0  |   1280/7842 ( 16%) ] Loss: 2.8377 perplexity= 17.0819
+Train epoch 43
+[E43B0  |   1280/7842 ( 16%) ] Loss: 2.8142 perplexity= 16.6817
+Train epoch 44
+[E44B0  |   1280/7842 ( 16%) ] Loss: 2.7989 perplexity= 16.4290
+Train epoch 45
+[E45B0  |   1280/7842 ( 16%) ] Loss: 2.7809 perplexity= 16.1379
+Train epoch 46
+[E46B0  |   1280/7842 ( 16%) ] Loss: 2.7525 perplexity= 15.6833
+Train epoch 47
+[E47B0  |   1280/7842 ( 16%) ] Loss: 2.7316 perplexity= 15.3600
+Train epoch 48
+[E48B0  |   1280/7842 ( 16%) ] Loss: 2.7129 perplexity= 15.0739
+Train epoch 49
+[E49B0  |   1280/7842 ( 16%) ] Loss: 2.6916 perplexity= 14.7582
+Train epoch 50
+[E50B0  |   1280/7842 ( 16%) ] Loss: 2.6756 perplexity= 14.5230
+Train epoch 51
+[E51B0  |   1280/7842 ( 16%) ] Loss: 2.6558 perplexity= 14.2378
+Train epoch 52
+[E52B0  |   1280/7842 ( 16%) ] Loss: 2.6463 perplexity= 14.1046
+Train epoch 53
+[E53B0  |   1280/7842 ( 16%) ] Loss: 2.6290 perplexity= 13.8615
+Train epoch 54
+[E54B0  |   1280/7842 ( 16%) ] Loss: 2.6337 perplexity= 13.9280
+Train epoch 55
+[E55B0  |   1280/7842 ( 16%) ] Loss: 2.6135 perplexity= 13.6490
+Train epoch 56
+[E56B0  |   1280/7842 ( 16%) ] Loss: 2.6027 perplexity= 13.5021
+Train epoch 57
+[E57B0  |   1280/7842 ( 16%) ] Loss: 2.5915 perplexity= 13.3508
+Train epoch 58
+[E58B0  |   1280/7842 ( 16%) ] Loss: 2.5976 perplexity= 13.4340
+Train epoch 59
+[E59B0  |   1280/7842 ( 16%) ] Loss: 2.5774 perplexity= 13.1664
+Train epoch 60
+[E60B0  |   1280/7842 ( 16%) ] Loss: 2.5720 perplexity= 13.0938
+Train epoch 61
+[E61B0  |   1280/7842 ( 16%) ] Loss: 2.5588 perplexity= 12.9229
+Train epoch 62
+[E62B0  |   1280/7842 ( 16%) ] Loss: 2.5567 perplexity= 12.8959
+Train epoch 63
+[E63B0  |   1280/7842 ( 16%) ] Loss: 2.5423 perplexity= 12.7108
+Train epoch 64
+[E64B0  |   1280/7842 ( 16%) ] Loss: 2.5474 perplexity= 12.7760
+Train epoch 65
+[E65B0  |   1280/7842 ( 16%) ] Loss: 2.5365 perplexity= 12.6382
+Train epoch 66
+[E66B0  |   1280/7842 ( 16%) ] Loss: 2.5392 perplexity= 12.6713
+Train epoch 67
+[E67B0  |   1280/7842 ( 16%) ] Loss: 2.5275 perplexity= 12.5245
+Train epoch 68
+[E68B0  |   1280/7842 ( 16%) ] Loss: 2.5236 perplexity= 12.4768
+Train epoch 69
+[E69B0  |   1280/7842 ( 16%) ] Loss: 2.5215 perplexity= 12.4508
+Train epoch 70
+[E70B0  |   1280/7842 ( 16%) ] Loss: 2.5231 perplexity= 12.4703
+Train epoch 71
+[E71B0  |   1280/7842 ( 16%) ] Loss: 2.5093 perplexity= 12.2987
+Train epoch 72
+[E72B0  |   1280/7842 ( 16%) ] Loss: 2.5089 perplexity= 12.2950
+Train epoch 73
+[E73B0  |   1280/7842 ( 16%) ] Loss: 2.5121 perplexity= 12.3327
+Train epoch 74
+[E74B0  |   1280/7842 ( 16%) ] Loss: 2.5036 perplexity= 12.2327
+Train epoch 75
+[E75B0  |   1280/7842 ( 16%) ] Loss: 2.5037 perplexity= 12.2331
+Train epoch 76
+[E76B0  |   1280/7842 ( 16%) ] Loss: 2.5013 perplexity= 12.2018
+Train epoch 77
+[E77B0  |   1280/7842 ( 16%) ] Loss: 2.4927 perplexity= 12.0959
+Train epoch 78
+[E78B0  |   1280/7842 ( 16%) ] Loss: 2.4938 perplexity= 12.1120
+Train epoch 79
+[E79B0  |   1280/7842 ( 16%) ] Loss: 2.4908 perplexity= 12.0742
+Train epoch 80
+[E80B0  |   1280/7842 ( 16%) ] Loss: 2.4813 perplexity= 11.9626
+Train epoch 81
+[E81B0  |   1280/7842 ( 16%) ] Loss: 2.4873 perplexity= 12.0335
+Train epoch 82
+[E82B0  |   1280/7842 ( 16%) ] Loss: 2.4760 perplexity= 11.8970
+Train epoch 83
+[E83B0  |   1280/7842 ( 16%) ] Loss: 2.4806 perplexity= 11.9541
+Train epoch 84
+[E84B0  |   1280/7842 ( 16%) ] Loss: 2.4755 perplexity= 11.8914
+Train epoch 85
+[E85B0  |   1280/7842 ( 16%) ] Loss: 2.4791 perplexity= 11.9337
+Train epoch 86
+[E86B0  |   1280/7842 ( 16%) ] Loss: 2.4651 perplexity= 11.7691
+Train epoch 87
+[E87B0  |   1280/7842 ( 16%) ] Loss: 2.4636 perplexity= 11.7526
+Train epoch 88
+[E88B0  |   1280/7842 ( 16%) ] Loss: 2.4655 perplexity= 11.7770
+Train epoch 89
+[E89B0  |   1280/7842 ( 16%) ] Loss: 2.4702 perplexity= 11.8288
+Train epoch 90
+[E90B0  |   1280/7842 ( 16%) ] Loss: 2.4641 perplexity= 11.7592
+Train epoch 91
+[E91B0  |   1280/7842 ( 16%) ] Loss: 2.4591 perplexity= 11.6979
+Train epoch 92
+[E92B0  |   1280/7842 ( 16%) ] Loss: 2.4607 perplexity= 11.7191
+Train epoch 93
+[E93B0  |   1280/7842 ( 16%) ] Loss: 2.4582 perplexity= 11.6906
+Train epoch 94
+[E94B0  |   1280/7842 ( 16%) ] Loss: 2.4576 perplexity= 11.6828
+Train epoch 95
+[E95B0  |   1280/7842 ( 16%) ] Loss: 2.4605 perplexity= 11.7188
+Train epoch 96
+[E96B0  |   1280/7842 ( 16%) ] Loss: 2.4451 perplexity= 11.5373
+Train epoch 97
+[E97B0  |   1280/7842 ( 16%) ] Loss: 2.4527 perplexity= 11.6300
+Train epoch 98
+[E98B0  |   1280/7842 ( 16%) ] Loss: 2.4459 perplexity= 11.5484
+Train epoch 99
+[E99B0  |   1280/7842 ( 16%) ] Loss: 2.4428 perplexity= 11.5115
+Train epoch 100
+[E100B0  |   1280/7842 ( 16%) ] Loss: 2.4379 perplexity= 11.4583

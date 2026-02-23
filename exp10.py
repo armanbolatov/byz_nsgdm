@@ -144,7 +144,7 @@ else:
         best_lr_map = {(r.Attack, r.Aggregator, r.Optimizer): r.LR for r in best_rows.itertuples()}
         
         # 3x3 plot: one subplot per attack-aggregator combination
-        fig, axes = plt.subplots(3, 3, figsize=(15, 12))
+        fig, axes = plt.subplots(3, 3, figsize=(12, 6))
         
         attacks = ["BF", "LF", "mimic"]
         aggregators = ["RFA", "KRUM", "CM"]
@@ -165,26 +165,31 @@ else:
                         if len(opt_lr_sub) == 0:
                             continue
                         grouped = opt_lr_sub.groupby("Iterations")["Accuracy (%)"].agg(["mean", "std"]).reset_index()
-                        label_lr = f"{best_lr:.4g}"
-                        ax.plot(grouped["Iterations"], grouped["mean"], color=colors[optimizer], linewidth=2,
-                                label=f"{optimizer} (lr={label_lr})")
+                        ax.plot(grouped["Iterations"], grouped["mean"], color=colors[optimizer], linewidth=1.5,
+                                label=f"{optimizer} (lr={best_lr:.3g})")
                         ax.fill_between(grouped["Iterations"], grouped["mean"] - grouped["std"], grouped["mean"] + grouped["std"],
-                                        color=colors[optimizer], alpha=0.3)
+                                        color=colors[optimizer], alpha=0.2)
                 else:
-                    ax.text(0.5, 0.5, "No Data", transform=ax.transAxes, ha="center", va="center", fontsize=12, alpha=0.5)
+                    ax.text(0.5, 0.5, "No Data", transform=ax.transAxes, ha="center", va="center", fontsize=10, alpha=0.5)
+                agg_display = {"RFA": "RFA", "KRUM": "Krum", "CM": "CM"}[agg]
+                attack_display = {"BF": "BF", "LF": "LF", "mimic": "Mimic"}[attack]
+                ax.set_title(f"{attack_display} + {agg_display}", fontsize=10)
                 ax.set_xlim(0, MAX_BATCHES_PER_EPOCH * EPOCHS)
                 ax.set_ylim(40, 100)
                 ax.grid(True, alpha=0.3)
-                ax.set_title(f"{attack} + {agg}", fontsize=10, fontweight='bold')
+                for spine in ax.spines.values():
+                    spine.set_color('black')
+                    spine.set_linewidth(0.8)
                 if i == 2:
-                    ax.set_xlabel("Iterations")
+                    ax.set_xlabel("Iterations", fontsize=10)
                 if j == 0:
-                    ax.set_ylabel("Accuracy (%)")
-                ax.legend(loc="lower right", fontsize=9)
+                    ax.set_ylabel("Accuracy (%)", fontsize=10)
+                ax.legend(loc="lower right", fontsize=7, framealpha=0.9)
+                ax.tick_params(axis='both', which='both', direction='out', length=4, labelsize=9)
+                ax.xaxis.set_tick_params(which='both', bottom=True, top=False)
+                ax.yaxis.set_tick_params(which='both', left=True, right=False)
         
-        # Adjust layout
         plt.tight_layout()
-        plt.subplots_adjust(top=0.93)
         
         # Save the plot
         fig.savefig(OUT_DIR + "exp10_accuracy_comparison.pdf", bbox_inches="tight", dpi=300)

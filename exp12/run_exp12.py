@@ -364,7 +364,7 @@ def main(args):
             nan_detected = True
             break
         
-        val_ppl = math.exp(val_loss)
+        val_ppl = math.exp(min(val_loss, 20.0))
         print(f"Epoch {epoch}: val_loss={val_loss:.4f}, val_ppl={val_ppl:.2f}")
         json_logger.info({
             "_meta": {"type": "validation"},
@@ -446,11 +446,14 @@ if __name__ == "__main__":
             df = pd.DataFrame(results)
             print(f"Loaded {len(df)} data points")
             
-            # Select best LR per (Attack, Aggregator, Optimizer) by lowest final perplexity
-            final_idx = df.groupby(["Attack", "Aggregator", "Optimizer", "LR", "seed"])["Epoch"].transform("max")
-            final_df = df[df["Epoch"] == final_idx]
+            SEEDS = [0, 42, 123]
+            
+            # Find best LR using seed 0 only
+            seed0_df = df[df["seed"] == 0]
+            final_epoch = seed0_df.groupby(["Attack", "Aggregator", "Optimizer", "LR"])["Epoch"].transform("max")
+            final_df = seed0_df[seed0_df["Epoch"] == final_epoch]
             lr_perf = final_df.groupby(["Attack", "Aggregator", "Optimizer", "LR"])["Val PPL"].mean().reset_index()
-            best_rows = lr_perf.sort_values(["Attack", "Aggregator", "Optimizer", "Val PPL"], ascending=[True, True, True, True])\
+            best_rows = lr_perf.sort_values(["Attack", "Aggregator", "Optimizer", "Val PPL"])\
                                 .drop_duplicates(subset=["Attack", "Aggregator", "Optimizer"], keep="first")
             best_lr_map = {(r.Attack, r.Aggregator, r.Optimizer): r.LR for r in best_rows.itertuples()}
             
@@ -462,38 +465,48 @@ if __name__ == "__main__":
             aggregators = ["RFA", "KRUM", "CM"]
             colors = {"Baseline": "#1f77b4", "Baseline-Decay": "#2ca02c", "Byz-NSGDM": "#ff7f0e"}
             
-            fig, axes = plt.subplots(3, 3, figsize=(15, 12))
+            fig, axes = plt.subplots(3, 3, figsize=(12, 6))
             
             for i, attack in enumerate(attacks):
                 for j, agg in enumerate(aggregators):
                     ax = axes[i, j]
                     subset = df[(df["Attack"] == attack) & (df["Aggregator"] == agg)]
                     
-                    if len(subset) > 0:
-                        for opt in ["Baseline", "Baseline-Decay", "Byz-NSGDM"]:
-                            key = (attack, agg, opt)
-                            if key not in best_lr_map:
-                                continue
-                            best_lr = best_lr_map[key]
-                            opt_data = subset[(subset["Optimizer"] == opt) & (subset["LR"] == best_lr)]
-                            if len(opt_data) > 0:
-                                grouped = opt_data.groupby("Epoch")["Val PPL"].agg(["mean", "std"]).reset_index()
-                                label_lr = f"{best_lr:.4g}"
-                                ax.plot(grouped["Epoch"], grouped["mean"], color=colors[opt], 
-                                       label=f"{opt} (lr={label_lr})", linewidth=2)
-                                ax.fill_between(grouped["Epoch"], grouped["mean"] - grouped["std"], 
-                                              grouped["mean"] + grouped["std"], color=colors[opt], alpha=0.2)
-                    else:
-                        ax.text(0.5, 0.5, "No Data", transform=ax.transAxes, ha="center", va="center", fontsize=12, alpha=0.5)
+                    for opt in ["Baseline", "Baseline-Decay", "Byz-NSGDM"]:
+                        key = (attack, agg, opt)
+                        if key not in best_lr_map:
+                            continue
+                        best_lr = best_lr_map[key]
+                        opt_data = subset[(subset["Optimizer"] == opt) & (subset["LR"] == best_lr) & (subset["seed"].isin(SEEDS))]
+                        
+                        # Check we have exactly 3 seeds
+                        seeds_present = sorted([int(s) for s in opt_data["seed"].unique()])
+                        if len(seeds_present) != 3:
+                            print(f"ERROR: {attack}/{agg}/{opt} (lr={best_lr}) has {len(seeds_present)} seeds (need 3): {seeds_present}")
+                            continue
+                        
+                        grouped = opt_data.groupby("Epoch")["Val PPL"].agg(["mean", "std"]).reset_index()
+                        ax.plot(grouped["Epoch"], grouped["mean"], color=colors[opt], 
+                               label=f"{opt} (lr={best_lr:.3g})", linewidth=1.5)
+                        ax.fill_between(grouped["Epoch"], grouped["mean"] - grouped["std"], 
+                                      grouped["mean"] + grouped["std"], color=colors[opt], alpha=0.2)
                     
-                    ax.set_title(f"{attack} + {agg}", fontsize=10, fontweight='bold')
+                    agg_display = {"RFA": "RFA", "KRUM": "Krum", "CM": "CM"}[agg]
+                    attack_display = {"BF": "BF", "mimic": "Mimic", "ALIE": "ALIE"}[attack]
+                    ax.set_title(f"{attack_display} + {agg_display}", fontsize=10)
                     ax.set_yscale('log')
-                    if i == 2:
-                        ax.set_xlabel("Epoch")
-                    if j == 0:
-                        ax.set_ylabel("Val Perplexity (log)")
-                    ax.legend(loc="upper right", fontsize=8)
                     ax.grid(True, alpha=0.3)
+                    for spine in ax.spines.values():
+                        spine.set_color('black')
+                        spine.set_linewidth(0.8)
+                    if i == 2:
+                        ax.set_xlabel("Epoch", fontsize=10)
+                    if j == 0:
+                        ax.set_ylabel("Perplexity", fontsize=10)
+                    ax.legend(loc="upper right", fontsize=7, framealpha=0.9)
+                    ax.tick_params(axis='both', which='both', direction='out', length=4, labelsize=9)
+                    ax.xaxis.set_tick_params(which='both', bottom=True, top=False)
+                    ax.yaxis.set_tick_params(which='both', left=True, right=False)
             
             plt.tight_layout()
             fig.savefig(os.path.join(out_dir, "exp12_perplexity.pdf"), bbox_inches="tight", dpi=300)

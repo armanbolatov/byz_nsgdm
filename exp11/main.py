@@ -7,6 +7,7 @@ from matplotlib.patches import Rectangle
 import seaborn as sns
 import os
 import pickle
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from federated_system import *
 
 sns.set_style("whitegrid")
@@ -131,17 +132,18 @@ def tune_learning_rate(attack_type, aggregator_type, optimizer_type,
     return best_lr, scores
 
 
-def plot_results(results_dict, save_path='byzantine_robust_results.png'):
+def plot_results(results_dict, save_path='exp11_comparison.png'):
     """Create 3x3 subplot grid comparing different configurations"""
     
     attacks = ['bf', 'mimic', 'alie']
     attack_names = ['BF', 'Mimic', 'ALIE']
     aggregators = ['rfa', 'krum', 'cm']
-    aggregator_names = ['RFA', 'KRUM', 'CM']
+    aggregator_names = ['RFA', 'Krum', 'CM']
     
-    fig, axes = plt.subplots(3, 3, figsize=(15, 12))
+    fig, axes = plt.subplots(3, 3, figsize=(12, 6))
     
     colors = {'baseline': '#1f77b4', 'baseline-decay': '#2ca02c', 'byz-nsgdm': '#ff7f0e'}
+    labels = {'baseline': 'Baseline', 'baseline-decay': 'Baseline-Decay', 'byz-nsgdm': 'Byz-NSGDM'}
     
     for i, attack in enumerate(attacks):
         for j, aggregator in enumerate(aggregators):
@@ -153,43 +155,41 @@ def plot_results(results_dict, save_path='byzantine_robust_results.png'):
                     data = results_dict[key]
                     mean_vals = data['mean_grad_norms']
                     std_vals = data['std_grad_norms']
-                    
-                    n_seeds = len(data['all_grad_norms'])
+                    best_lr = data['best_lr']
                     
                     x_indices = range(0, len(mean_vals), 20)
                     mean_vals_sampled = mean_vals[::20]
                     std_vals_sampled = std_vals[::20]
                     
-                    if optimizer == 'baseline':
-                        label = 'Baseline'
-                    elif optimizer == 'baseline-decay':
-                        label = 'Baseline-Decay'
-                    else:
-                        label = 'Byz-NSGDM'
                     ax.plot(x_indices, mean_vals_sampled, 
-                           label=label, 
+                           label=f"{labels[optimizer]} (lr={best_lr:.3g})", 
                            color=colors[optimizer], 
-                           linewidth=2)
+                           linewidth=1.5)
                     
                     ax.fill_between(x_indices,
                                    mean_vals_sampled - std_vals_sampled,
                                    mean_vals_sampled + std_vals_sampled,
                                    color=colors[optimizer],
-                                   alpha=0.3)
+                                   alpha=0.2)
             
+            ax.set_title(f"{attack_names[i]} + {aggregator_names[j]}", fontsize=10)
             ax.set_yscale('log')
             ax.set_xlim(0, 3000)
             ax.set_ylim(1e-6, 1e2)
             ax.grid(True, alpha=0.3)
-            ax.set_title(f"{attack_names[i]} + {aggregator_names[j]}", fontsize=10, fontweight='bold')
+            for spine in ax.spines.values():
+                spine.set_color('black')
+                spine.set_linewidth(0.8)
             if i == 2:
-                ax.set_xlabel("Iterations")
+                ax.set_xlabel("Iterations", fontsize=10)
             if j == 0:
-                ax.set_ylabel("Gradient Norm (log scale)")
-            ax.legend(loc='upper right', fontsize=9)
+                ax.set_ylabel("Gradient Norm", fontsize=10)
+            ax.legend(loc='upper right', fontsize=7, framealpha=0.9)
+            ax.tick_params(axis='both', which='both', direction='out', length=4, labelsize=9)
+            ax.xaxis.set_tick_params(which='both', bottom=True, top=False)
+            ax.yaxis.set_tick_params(which='both', left=True, right=False)
     
     plt.tight_layout()
-    plt.subplots_adjust(top=0.93)
     
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.savefig(save_path.replace('.png', '.pdf'), dpi=300, bbox_inches='tight')
@@ -239,6 +239,32 @@ def print_summary_statistics(results_dict):
                           f"Final obj = {final_obj:.4f}, Conv. rate = {convergence_rate:.2%}")
 
 
+def run_single_experiment(attack, aggregator, optimizer):
+    """Run a single experiment (for parallel execution)"""
+    best_lr, _ = tune_learning_rate(
+        attack_type=attack,
+        aggregator_type=aggregator,
+        optimizer_type=optimizer,
+        n_iterations=500,
+        n_seeds=1,
+        verbose=False,
+    )
+    
+    results = run_multiple_seeds(
+        attack_type=attack,
+        aggregator_type=aggregator,
+        optimizer_type=optimizer,
+        n_seeds=3,
+        n_iterations=3000,
+        lr=best_lr,
+        verbose=False,
+    )
+    
+    results['best_lr'] = best_lr
+    key = f"{attack}_{aggregator}_{optimizer}"
+    return key, results
+
+
 def main():
     """Main experiment runner"""
     
@@ -258,66 +284,37 @@ def main():
     else:
         results_dict = {}
     
-    total_experiments = len(attacks) * len(aggregators) * len(optimizers)
-    experiment_count = 0
-    
+    experiments_to_run = []
     for attack in attacks:
         for aggregator in aggregators:
             for optimizer in optimizers:
-                experiment_count += 1
                 key = f"{attack}_{aggregator}_{optimizer}"
-                
-                if key in results_dict:
-                    print(f"\n{'='*60}")
-                    print(f"Experiment {experiment_count}/{total_experiments}")
-                    print(f"Configuration: {attack.upper()} + {aggregator.upper()} + {optimizer.upper()}")
-                    print("Skipping: Results already exist")
-                    print("="*60)
-                    continue
-                
-                print(f"\n{'='*60}")
-                print(f"Experiment {experiment_count}/{total_experiments}")
-                print(f"Configuration: {attack.upper()} + {aggregator.upper()} + {optimizer.upper()}")
-                print("="*60)
-
-                best_lr, lr_scores = tune_learning_rate(
-                    attack_type=attack,
-                    aggregator_type=aggregator,
-                    optimizer_type=optimizer,
-                    n_iterations=1000,
-                    n_seeds=1,
-                    verbose=True,
-                )
-
-                print(f"Selected LR for this setup: {best_lr:g}")
-
-                results = run_multiple_seeds(
-                    attack_type=attack,
-                    aggregator_type=aggregator,
-                    optimizer_type=optimizer,
-                    n_seeds=3,
-                    n_iterations=3000,
-                    lr=best_lr,
-                    verbose=True,
-                )
-                
-                results_dict[key] = results
-                
-                with open(results_file, 'wb') as f:
-                    pickle.dump(results_dict, f)
-                print(f"Results saved to {results_file}")
-                
-                final_grad = results['mean_grad_norms'][-1]
-                final_obj = results['mean_obj_values'][-1]
-                print(f"\nExperiment Summary:")
-                print(f"  Tuned LR: {best_lr:g}")
-                print(f"  Final gradient norm: {final_grad:.6e}")
-                print(f"  Final objective value: {final_obj:.6f}")
+                if key not in results_dict or 'best_lr' not in results_dict[key]:
+                    experiments_to_run.append((attack, aggregator, optimizer))
+    
+    if experiments_to_run:
+        print(f"\nRunning {len(experiments_to_run)} experiments in parallel...")
+        
+        with ProcessPoolExecutor(max_workers=min(os.cpu_count(), len(experiments_to_run))) as executor:
+            futures = {executor.submit(run_single_experiment, a, agg, opt): (a, agg, opt) 
+                       for a, agg, opt in experiments_to_run}
+            
+            for future in as_completed(futures):
+                attack, aggregator, optimizer = futures[future]
+                try:
+                    key, results = future.result()
+                    results_dict[key] = results
+                    print(f"Completed: {key} (best_lr={results['best_lr']:.3g})")
+                    
+                    with open(results_file, 'wb') as f:
+                        pickle.dump(results_dict, f)
+                except Exception as e:
+                    print(f"Failed: {attack}_{aggregator}_{optimizer}: {e}")
     
     print_summary_statistics(results_dict)
     
     print("\nGenerating visualization...")
-    fig = plot_results(results_dict, save_path=os.path.join(OUTPUT_DIR, 'byzantine_robust_results.png'))
+    fig = plot_results(results_dict, save_path=os.path.join(OUTPUT_DIR, 'exp11_comparison.png'))
     plt.show()
     
     return results_dict

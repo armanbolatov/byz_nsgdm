@@ -1,0 +1,9 @@
+{'_meta': {'type': 'train'}, 'E': 1, 'B': 0, 'Length': 1280, 'Loss': 4.171468257904053, 'perplexity': 64.8108410433461}
+{'_meta': {'type': 'validation'}, 'E': 1, 'val_loss': np.float64(9.791287104288736), 'val_ppl': 17877.301317115525}
+{'_meta': {'type': 'train'}, 'E': 2, 'B': 0, 'Length': 1280, 'Loss': 9.637420320510865, 'perplexity': 15388.672803172343}
+{'_meta': {'type': 'validation'}, 'E': 2, 'val_loss': np.float64(152.54962158203125), 'val_ppl': 485165195.4097903}
+{'_meta': {'type': 'train'}, 'E': 3, 'B': 0, 'Length': 1280, 'Loss': 150.58721313476562, 'perplexity': 485165195.40979016}
+{'_meta': {'type': 'validation'}, 'E': 3, 'val_loss': np.float64(1096515.875), 'val_ppl': 485165195.4097903}
+{'_meta': {'type': 'train'}, 'E': 4, 'B': 0, 'Length': 1280, 'Loss': 1023200.359375, 'perplexity': 485165195.40979016}
+{'_meta': {'type': 'train_error'}, 'E': 4, 'B': 4, 'error': 'NaN or Inf loss'}
+{'_meta': {'type': 'error'}, 'E': 4, 'error': 'NaN/Inf loss'}

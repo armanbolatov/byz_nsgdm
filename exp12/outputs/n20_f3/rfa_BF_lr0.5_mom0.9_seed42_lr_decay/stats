@@ -1,0 +1,200 @@
+{'_meta': {'type': 'train'}, 'E': 1, 'B': 0, 'Length': 1280, 'Loss': 4.182845211029052, 'perplexity': 65.55229711862921}
+{'_meta': {'type': 'validation'}, 'E': 1, 'val_loss': np.float64(8.598491032918295), 'val_ppl': 5423.4695766259465}
+{'_meta': {'type': 'train'}, 'E': 2, 'B': 0, 'Length': 1280, 'Loss': 8.512172174453735, 'perplexity': 4995.956251533767}
+{'_meta': {'type': 'validation'}, 'E': 2, 'val_loss': np.float64(4.777306079864502), 'val_ppl': 118.78392423255947}
+{'_meta': {'type': 'train'}, 'E': 3, 'B': 0, 'Length': 1280, 'Loss': 4.785736727714538, 'perplexity': 119.81591100361277}
+{'_meta': {'type': 'validation'}, 'E': 3, 'val_loss': np.float64(3.4830066363016763), 'val_ppl': 32.55746351745189}
+{'_meta': {'type': 'train'}, 'E': 4, 'B': 0, 'Length': 1280, 'Loss': 3.463529407978058, 'perplexity': 31.945742024646762}
+{'_meta': {'type': 'validation'}, 'E': 4, 'val_loss': np.float64(3.4369424978892007), 'val_ppl': 31.091749602246292}
+{'_meta': {'type': 'train'}, 'E': 5, 'B': 0, 'Length': 1280, 'Loss': 3.421924424171448, 'perplexity': 30.643746002709776}
+{'_meta': {'type': 'validation'}, 'E': 5, 'val_loss': np.float64(3.422301769256592), 'val_ppl': 30.63985980345267}
+{'_meta': {'type': 'train'}, 'E': 6, 'B': 0, 'Length': 1280, 'Loss': 3.411747992038727, 'perplexity': 30.326456347225765}
+{'_meta': {'type': 'validation'}, 'E': 6, 'val_loss': np.float64(3.373647133509318), 'val_ppl': 29.184773958776614}
+{'_meta': {'type': 'train'}, 'E': 7, 'B': 0, 'Length': 1280, 'Loss': 3.3416057348251345, 'perplexity': 28.277517145213427}
+{'_meta': {'type': 'validation'}, 'E': 7, 'val_loss': np.float64(3.3565608660380044), 'val_ppl': 28.690351054271087}
+{'_meta': {'type': 'train'}, 'E': 8, 'B': 0, 'Length': 1280, 'Loss': 3.3264485239982604, 'perplexity': 27.85504784267034}
+{'_meta': {'type': 'validation'}, 'E': 8, 'val_loss': np.float64(3.3330726623535156), 'val_ppl': 28.02431881568173}
+{'_meta': {'type': 'train'}, 'E': 9, 'B': 0, 'Length': 1280, 'Loss': 3.3138718605041504, 'perplexity': 27.507269354085473}
+{'_meta': {'type': 'validation'}, 'E': 9, 'val_loss': np.float64(3.3268579641977944), 'val_ppl': 27.850696198114047}
+{'_meta': {'type': 'train'}, 'E': 10, 'B': 0, 'Length': 1280, 'Loss': 3.3058310747146606, 'perplexity': 27.283136037051896}
+{'_meta': {'type': 'validation'}, 'E': 10, 'val_loss': np.float64(3.3220725059509277), 'val_ppl': 27.717736245201966}
+{'_meta': {'type': 'train'}, 'E': 11, 'B': 0, 'Length': 1280, 'Loss': 3.3008552312850954, 'perplexity': 27.15997497811768}
+{'_meta': {'type': 'validation'}, 'E': 11, 'val_loss': np.float64(3.315283457438151), 'val_ppl': 27.53019651764987}
+{'_meta': {'type': 'train'}, 'E': 12, 'B': 0, 'Length': 1280, 'Loss': 3.2929078936576843, 'perplexity': 26.938725853158665}
+{'_meta': {'type': 'validation'}, 'E': 12, 'val_loss': np.float64(3.3089918295542398), 'val_ppl': 27.35753051029869}
+{'_meta': {'type': 'train'}, 'E': 13, 'B': 0, 'Length': 1280, 'Loss': 3.278254437446594, 'perplexity': 26.5469032987268}
+{'_meta': {'type': 'validation'}, 'E': 13, 'val_loss': np.float64(3.3050594329833984), 'val_ppl': 27.250161099046657}
+{'_meta': {'type': 'train'}, 'E': 14, 'B': 0, 'Length': 1280, 'Loss': 3.288962888717651, 'perplexity': 26.82736922412842}
+{'_meta': {'type': 'validation'}, 'E': 14, 'val_loss': np.float64(3.301913022994995), 'val_ppl': 27.164555665498337}
+{'_meta': {'type': 'train'}, 'E': 15, 'B': 0, 'Length': 1280, 'Loss': 3.284614360332489, 'perplexity': 26.709575142954243}
+{'_meta': {'type': 'validation'}, 'E': 15, 'val_loss': np.float64(3.298112074534098), 'val_ppl': 27.061500567080987}
+{'_meta': {'type': 'train'}, 'E': 16, 'B': 0, 'Length': 1280, 'Loss': 3.2813927292823792, 'perplexity': 26.635160178906318}
+{'_meta': {'type': 'validation'}, 'E': 16, 'val_loss': np.float64(3.293944756189982), 'val_ppl': 26.948961335618392}
+{'_meta': {'type': 'train'}, 'E': 17, 'B': 0, 'Length': 1280, 'Loss': 3.2740422606468202, 'perplexity': 26.42929962707722}
+{'_meta': {'type': 'validation'}, 'E': 17, 'val_loss': np.float64(3.289924065272013), 'val_ppl': 26.8408254277356}
+{'_meta': {'type': 'train'}, 'E': 18, 'B': 0, 'Length': 1280, 'Loss': 3.278588855266571, 'perplexity': 26.557667846795756}
+{'_meta': {'type': 'validation'}, 'E': 18, 'val_loss': np.float64(3.2856956322987876), 'val_ppl': 26.72757041083886}
+{'_meta': {'type': 'train'}, 'E': 19, 'B': 0, 'Length': 1280, 'Loss': 3.2637664914131164, 'perplexity': 26.16376304407938}
+{'_meta': {'type': 'validation'}, 'E': 19, 'val_loss': np.float64(3.2812676429748535), 'val_ppl': 26.609482653016805}
+{'_meta': {'type': 'train'}, 'E': 20, 'B': 0, 'Length': 1280, 'Loss': 3.2653602600097655, 'perplexity': 26.20579752749689}
+{'_meta': {'type': 'validation'}, 'E': 20, 'val_loss': np.float64(3.2760985692342124), 'val_ppl': 26.472291156934826}
+{'_meta': {'type': 'train'}, 'E': 21, 'B': 0, 'Length': 1280, 'Loss': 3.262444865703583, 'perplexity': 26.124293192225586}
+{'_meta': {'type': 'validation'}, 'E': 21, 'val_loss': np.float64(3.271348158518473), 'val_ppl': 26.346835121125377}
+{'_meta': {'type': 'train'}, 'E': 22, 'B': 0, 'Length': 1280, 'Loss': 3.2430086493492127, 'perplexity': 25.623292516886572}
+{'_meta': {'type': 'validation'}, 'E': 22, 'val_loss': np.float64(3.2669849395751953), 'val_ppl': 26.232128537976592}
+{'_meta': {'type': 'train'}, 'E': 23, 'B': 0, 'Length': 1280, 'Loss': 3.2543885827064516, 'perplexity': 25.92184001673187}
+{'_meta': {'type': 'validation'}, 'E': 23, 'val_loss': np.float64(3.263385454813639), 'val_ppl': 26.137876122870374}
+{'_meta': {'type': 'train'}, 'E': 24, 'B': 0, 'Length': 1280, 'Loss': 3.236043155193329, 'perplexity': 25.449904041330626}
+{'_meta': {'type': 'validation'}, 'E': 24, 'val_loss': np.float64(3.260465701421102), 'val_ppl': 26.061671274206546}
+{'_meta': {'type': 'train'}, 'E': 25, 'B': 0, 'Length': 1280, 'Loss': 3.2426405906677247, 'perplexity': 25.610204731799552}
+{'_meta': {'type': 'validation'}, 'E': 25, 'val_loss': np.float64(3.2569826443990073), 'val_ppl': 25.971054889695367}
+{'_meta': {'type': 'train'}, 'E': 26, 'B': 0, 'Length': 1280, 'Loss': 3.2377709627151487, 'perplexity': 25.495336165527}
+{'_meta': {'type': 'validation'}, 'E': 26, 'val_loss': np.float64(3.2536279360453286), 'val_ppl': 25.88407555163166}
+{'_meta': {'type': 'train'}, 'E': 27, 'B': 0, 'Length': 1280, 'Loss': 3.233459174633026, 'perplexity': 25.377509573079415}
+{'_meta': {'type': 'validation'}, 'E': 27, 'val_loss': np.float64(3.250009536743164), 'val_ppl': 25.79058587421378}
+{'_meta': {'type': 'train'}, 'E': 28, 'B': 0, 'Length': 1280, 'Loss': 3.2334506630897524, 'perplexity': 25.374729576768257}
+{'_meta': {'type': 'validation'}, 'E': 28, 'val_loss': np.float64(3.2468392054239907), 'val_ppl': 25.7089506458139}
+{'_meta': {'type': 'train'}, 'E': 29, 'B': 0, 'Length': 1280, 'Loss': 3.2242882013320924, 'perplexity': 25.150326798065535}
+{'_meta': {'type': 'validation'}, 'E': 29, 'val_loss': np.float64(3.2432967027028403), 'val_ppl': 25.61803774287083}
+{'_meta': {'type': 'train'}, 'E': 30, 'B': 0, 'Length': 1280, 'Loss': 3.2330366253852842, 'perplexity': 25.368501974821175}
+{'_meta': {'type': 'validation'}, 'E': 30, 'val_loss': np.float64(3.2395753065745034), 'val_ppl': 25.52288004595957}
+{'_meta': {'type': 'train'}, 'E': 31, 'B': 0, 'Length': 1280, 'Loss': 3.226901137828827, 'perplexity': 25.220581616429516}
+{'_meta': {'type': 'validation'}, 'E': 31, 'val_loss': np.float64(3.2362706661224365), 'val_ppl': 25.438675313919163}
+{'_meta': {'type': 'train'}, 'E': 32, 'B': 0, 'Length': 1280, 'Loss': 3.223712611198425, 'perplexity': 25.14091036752583}
+{'_meta': {'type': 'validation'}, 'E': 32, 'val_loss': np.float64(3.23345947265625), 'val_ppl': 25.367262700454432}
+{'_meta': {'type': 'train'}, 'E': 33, 'B': 0, 'Length': 1280, 'Loss': 3.2177281379699707, 'perplexity': 24.985016875735962}
+{'_meta': {'type': 'validation'}, 'E': 33, 'val_loss': np.float64(3.231083552042643), 'val_ppl': 25.307063640505998}
+{'_meta': {'type': 'train'}, 'E': 34, 'B': 0, 'Length': 1280, 'Loss': 3.2095397472381593, 'perplexity': 24.776580048991583}
+{'_meta': {'type': 'validation'}, 'E': 34, 'val_loss': np.float64(3.2285099029541016), 'val_ppl': 25.242015880193037}
+{'_meta': {'type': 'train'}, 'E': 35, 'B': 0, 'Length': 1280, 'Loss': 3.215250849723816, 'perplexity': 24.920171383947963}
+{'_meta': {'type': 'validation'}, 'E': 35, 'val_loss': np.float64(3.226079781850179), 'val_ppl': 25.18074919757704}
+{'_meta': {'type': 'train'}, 'E': 36, 'B': 0, 'Length': 1280, 'Loss': 3.207165038585663, 'perplexity': 24.72505652621937}
+{'_meta': {'type': 'validation'}, 'E': 36, 'val_loss': np.float64(3.2235376834869385), 'val_ppl': 25.116818549682446}
+{'_meta': {'type': 'train'}, 'E': 37, 'B': 0, 'Length': 1280, 'Loss': 3.2173845529556275, 'perplexity': 24.975547331446695}
+{'_meta': {'type': 'validation'}, 'E': 37, 'val_loss': np.float64(3.2209208011627197), 'val_ppl': 25.051176717114863}
+{'_meta': {'type': 'train'}, 'E': 38, 'B': 0, 'Length': 1280, 'Loss': 3.2026825189590453, 'perplexity': 24.607980981008573}
+{'_meta': {'type': 'validation'}, 'E': 38, 'val_loss': np.float64(3.217857837677002), 'val_ppl': 24.97456326954959}
+{'_meta': {'type': 'train'}, 'E': 39, 'B': 0, 'Length': 1280, 'Loss': 3.2067811250686646, 'perplexity': 24.708695302512044}
+{'_meta': {'type': 'validation'}, 'E': 39, 'val_loss': np.float64(3.21417244275411), 'val_ppl': 24.88269153666801}
+{'_meta': {'type': 'train'}, 'E': 40, 'B': 0, 'Length': 1280, 'Loss': 3.203869342803955, 'perplexity': 24.64519765276058}
+{'_meta': {'type': 'validation'}, 'E': 40, 'val_loss': np.float64(3.208527406056722), 'val_ppl': 24.74262354624226}
+{'_meta': {'type': 'train'}, 'E': 41, 'B': 0, 'Length': 1280, 'Loss': 3.202972650527954, 'perplexity': 24.61497042864049}
+{'_meta': {'type': 'validation'}, 'E': 41, 'val_loss': np.float64(3.208902359008789), 'val_ppl': 24.75190260547942}
+{'_meta': {'type': 'train'}, 'E': 42, 'B': 0, 'Length': 1280, 'Loss': 3.190771055221558, 'perplexity': 24.32416624119366}
+{'_meta': {'type': 'validation'}, 'E': 42, 'val_loss': np.float64(3.2070037523905435), 'val_ppl': 24.704953062837955}
+{'_meta': {'type': 'train'}, 'E': 43, 'B': 0, 'Length': 1280, 'Loss': 3.190869128704071, 'perplexity': 24.329677822706323}
+{'_meta': {'type': 'validation'}, 'E': 43, 'val_loss': np.float64(3.2044785817464194), 'val_ppl': 24.64264753974568}
+{'_meta': {'type': 'train'}, 'E': 44, 'B': 0, 'Length': 1280, 'Loss': 3.1952678084373476, 'perplexity': 24.432595518794308}
+{'_meta': {'type': 'validation'}, 'E': 44, 'val_loss': np.float64(3.202784856160482), 'val_ppl': 24.600944983415065}
+{'_meta': {'type': 'train'}, 'E': 45, 'B': 0, 'Length': 1280, 'Loss': 3.1872851729393004, 'perplexity': 24.23758701785001}
+{'_meta': {'type': 'validation'}, 'E': 45, 'val_loss': np.float64(3.2011664708455405), 'val_ppl': 24.56116337498857}
+{'_meta': {'type': 'train'}, 'E': 46, 'B': 0, 'Length': 1280, 'Loss': 3.1780808210372924, 'perplexity': 24.01351435290225}
+{'_meta': {'type': 'validation'}, 'E': 46, 'val_loss': np.float64(3.1999027729034424), 'val_ppl': 24.530145086377647}
+{'_meta': {'type': 'train'}, 'E': 47, 'B': 0, 'Length': 1280, 'Loss': 3.1827774167060854, 'perplexity': 24.127898832786286}
+{'_meta': {'type': 'validation'}, 'E': 47, 'val_loss': np.float64(3.198721408843994), 'val_ppl': 24.501183165254226}
+{'_meta': {'type': 'train'}, 'E': 48, 'B': 0, 'Length': 1280, 'Loss': 3.181910812854767, 'perplexity': 24.102654108230688}
+{'_meta': {'type': 'validation'}, 'E': 48, 'val_loss': np.float64(3.197559912999471), 'val_ppl': 24.472741663362488}
+{'_meta': {'type': 'train'}, 'E': 49, 'B': 0, 'Length': 1280, 'Loss': 3.1799495458602904, 'perplexity': 24.058031456806866}
+{'_meta': {'type': 'validation'}, 'E': 49, 'val_loss': np.float64(3.1966923077901206), 'val_ppl': 24.45151819333615}
+{'_meta': {'type': 'train'}, 'E': 50, 'B': 0, 'Length': 1280, 'Loss': 3.1929581642150877, 'perplexity': 24.385877995823034}
+{'_meta': {'type': 'validation'}, 'E': 50, 'val_loss': np.float64(3.195216337839762), 'val_ppl': 24.41545510780434}
+{'_meta': {'type': 'train'}, 'E': 51, 'B': 0, 'Length': 1280, 'Loss': 3.181814360618591, 'perplexity': 24.097299739087454}
+{'_meta': {'type': 'validation'}, 'E': 51, 'val_loss': np.float64(3.1937995751698813), 'val_ppl': 24.380888694423362}
+{'_meta': {'type': 'train'}, 'E': 52, 'B': 0, 'Length': 1280, 'Loss': 3.176297461986542, 'perplexity': 23.970095602184998}
+{'_meta': {'type': 'validation'}, 'E': 52, 'val_loss': np.float64(3.1925121943155923), 'val_ppl': 24.3495214002668}
+{'_meta': {'type': 'train'}, 'E': 53, 'B': 0, 'Length': 1280, 'Loss': 3.174036681652069, 'perplexity': 23.921700042280968}
+{'_meta': {'type': 'validation'}, 'E': 53, 'val_loss': np.float64(3.1913138230641684), 'val_ppl': 24.32035911094934}
+{'_meta': {'type': 'train'}, 'E': 54, 'B': 0, 'Length': 1280, 'Loss': 3.1832212924957277, 'perplexity': 24.134054719985592}
+{'_meta': {'type': 'validation'}, 'E': 54, 'val_loss': np.float64(3.1902213096618652), 'val_ppl': 24.293803301601997}
+{'_meta': {'type': 'train'}, 'E': 55, 'B': 0, 'Length': 1280, 'Loss': 3.172940564155579, 'perplexity': 23.884254365430543}
+{'_meta': {'type': 'validation'}, 'E': 55, 'val_loss': np.float64(3.188915808995565), 'val_ppl': 24.262108418551808}
+{'_meta': {'type': 'train'}, 'E': 56, 'B': 0, 'Length': 1280, 'Loss': 3.173542928695679, 'perplexity': 23.908731188506188}
+{'_meta': {'type': 'validation'}, 'E': 56, 'val_loss': np.float64(3.1874080499013266), 'val_ppl': 24.22555456806353}
+{'_meta': {'type': 'train'}, 'E': 57, 'B': 0, 'Length': 1280, 'Loss': 3.1762328505516053, 'perplexity': 23.9680007491839}
+{'_meta': {'type': 'validation'}, 'E': 57, 'val_loss': np.float64(3.185725529988607), 'val_ppl': 24.184828860620392}
+{'_meta': {'type': 'train'}, 'E': 58, 'B': 0, 'Length': 1280, 'Loss': 3.183543884754181, 'perplexity': 24.14195878351314}
+{'_meta': {'type': 'validation'}, 'E': 58, 'val_loss': np.float64(3.1844595273335776), 'val_ppl': 24.154230176166166}
+{'_meta': {'type': 'train'}, 'E': 59, 'B': 0, 'Length': 1280, 'Loss': 3.175110602378845, 'perplexity': 23.9377356101567}
+{'_meta': {'type': 'validation'}, 'E': 59, 'val_loss': np.float64(3.1829304695129395), 'val_ppl': 24.11732518373783}
+{'_meta': {'type': 'train'}, 'E': 60, 'B': 0, 'Length': 1280, 'Loss': 3.1763182401657106, 'perplexity': 23.973267268503534}
+{'_meta': {'type': 'validation'}, 'E': 60, 'val_loss': np.float64(3.1818610032399497), 'val_ppl': 24.09154630513677}
+{'_meta': {'type': 'train'}, 'E': 61, 'B': 0, 'Length': 1280, 'Loss': 3.162708246707916, 'perplexity': 23.640140037235067}
+{'_meta': {'type': 'validation'}, 'E': 61, 'val_loss': np.float64(3.180976390838623), 'val_ppl': 24.070244048017678}
+{'_meta': {'type': 'train'}, 'E': 62, 'B': 0, 'Length': 1280, 'Loss': 3.170814108848572, 'perplexity': 23.835289930104857}
+{'_meta': {'type': 'validation'}, 'E': 62, 'val_loss': np.float64(3.179830312728882), 'val_ppl': 24.04267347025376}
+{'_meta': {'type': 'train'}, 'E': 63, 'B': 0, 'Length': 1280, 'Loss': 3.161798346042633, 'perplexity': 23.62670475592581}
+{'_meta': {'type': 'validation'}, 'E': 63, 'val_loss': np.float64(3.178999662399292), 'val_ppl': 24.022710707796904}
+{'_meta': {'type': 'train'}, 'E': 64, 'B': 0, 'Length': 1280, 'Loss': 3.163221299648285, 'perplexity': 23.660128463624076}
+{'_meta': {'type': 'validation'}, 'E': 64, 'val_loss': np.float64(3.178231875101725), 'val_ppl': 24.004273454512496}
+{'_meta': {'type': 'train'}, 'E': 65, 'B': 0, 'Length': 1280, 'Loss': 3.1596265196800233, 'perplexity': 23.572920708026466}
+{'_meta': {'type': 'validation'}, 'E': 65, 'val_loss': np.float64(3.1772186756134033), 'val_ppl': 23.97996465384261}
+{'_meta': {'type': 'train'}, 'E': 66, 'B': 0, 'Length': 1280, 'Loss': 3.1612337589263917, 'perplexity': 23.613437043685074}
+{'_meta': {'type': 'validation'}, 'E': 66, 'val_loss': np.float64(3.1760873794555664), 'val_ppl': 23.95285155133069}
+{'_meta': {'type': 'train'}, 'E': 67, 'B': 0, 'Length': 1280, 'Loss': 3.1628240823745726, 'perplexity': 23.646584600874224}
+{'_meta': {'type': 'validation'}, 'E': 67, 'val_loss': np.float64(3.1753119627634683), 'val_ppl': 23.934285309631576}
+{'_meta': {'type': 'train'}, 'E': 68, 'B': 0, 'Length': 1280, 'Loss': 3.167466962337494, 'perplexity': 23.76116209299014}
+{'_meta': {'type': 'validation'}, 'E': 68, 'val_loss': np.float64(3.1741295655568442), 'val_ppl': 23.906002201767922}
+{'_meta': {'type': 'train'}, 'E': 69, 'B': 0, 'Length': 1280, 'Loss': 3.15494122505188, 'perplexity': 23.472415325520608}
+{'_meta': {'type': 'validation'}, 'E': 69, 'val_loss': np.float64(3.173487424850464), 'val_ppl': 23.89065611232903}
+{'_meta': {'type': 'train'}, 'E': 70, 'B': 0, 'Length': 1280, 'Loss': 3.162593197822571, 'perplexity': 23.644701771445575}
+{'_meta': {'type': 'validation'}, 'E': 70, 'val_loss': np.float64(3.172351678212484), 'val_ppl': 23.86353778266123}
+{'_meta': {'type': 'train'}, 'E': 71, 'B': 0, 'Length': 1280, 'Loss': 3.163001823425293, 'perplexity': 23.655183864367654}
+{'_meta': {'type': 'validation'}, 'E': 71, 'val_loss': np.float64(3.171337445576986), 'val_ppl': 23.83934687352208}
+{'_meta': {'type': 'train'}, 'E': 72, 'B': 0, 'Length': 1280, 'Loss': 3.155446946620941, 'perplexity': 23.472867031065917}
+{'_meta': {'type': 'validation'}, 'E': 72, 'val_loss': np.float64(3.170464833577474), 'val_ppl': 23.818553446995903}
+{'_meta': {'type': 'train'}, 'E': 73, 'B': 0, 'Length': 1280, 'Loss': 3.1572729110717774, 'perplexity': 23.51943139626047}
+{'_meta': {'type': 'validation'}, 'E': 73, 'val_loss': np.float64(3.1693058808644614), 'val_ppl': 23.79096485988043}
+{'_meta': {'type': 'train'}, 'E': 74, 'B': 0, 'Length': 1280, 'Loss': 3.148232126235962, 'perplexity': 23.30391049923213}
+{'_meta': {'type': 'validation'}, 'E': 74, 'val_loss': np.float64(3.168456474939982), 'val_ppl': 23.770765253426546}
+{'_meta': {'type': 'train'}, 'E': 75, 'B': 0, 'Length': 1280, 'Loss': 3.1492767453193666, 'perplexity': 23.329295826172086}
+{'_meta': {'type': 'validation'}, 'E': 75, 'val_loss': np.float64(3.167569716771444), 'val_ppl': 23.74969567635611}
+{'_meta': {'type': 'train'}, 'E': 76, 'B': 0, 'Length': 1280, 'Loss': 3.1504520177841187, 'perplexity': 23.356115720562446}
+{'_meta': {'type': 'validation'}, 'E': 76, 'val_loss': np.float64(3.166622002919515), 'val_ppl': 23.727198422947726}
+{'_meta': {'type': 'train'}, 'E': 77, 'B': 0, 'Length': 1280, 'Loss': 3.1629347443580627, 'perplexity': 23.648418927521767}
+{'_meta': {'type': 'validation'}, 'E': 77, 'val_loss': np.float64(3.1654743353525796), 'val_ppl': 23.69998310691843}
+{'_meta': {'type': 'train'}, 'E': 78, 'B': 0, 'Length': 1280, 'Loss': 3.150751304626465, 'perplexity': 23.370206961798374}
+{'_meta': {'type': 'validation'}, 'E': 78, 'val_loss': np.float64(3.164443254470825), 'val_ppl': 23.675559101165497}
+{'_meta': {'type': 'train'}, 'E': 79, 'B': 0, 'Length': 1280, 'Loss': 3.1537501335144045, 'perplexity': 23.436946690015766}
+{'_meta': {'type': 'validation'}, 'E': 79, 'val_loss': np.float64(3.1637564500172934), 'val_ppl': 23.659304204341684}
+{'_meta': {'type': 'train'}, 'E': 80, 'B': 0, 'Length': 1280, 'Loss': 3.1454166531562806, 'perplexity': 23.238587942092547}
+{'_meta': {'type': 'validation'}, 'E': 80, 'val_loss': np.float64(3.162846803665161), 'val_ppl': 23.637792390133217}
+{'_meta': {'type': 'train'}, 'E': 81, 'B': 0, 'Length': 1280, 'Loss': 3.144062948226929, 'perplexity': 23.20880984493635}
+{'_meta': {'type': 'validation'}, 'E': 81, 'val_loss': np.float64(3.162044127782186), 'val_ppl': 23.618826516997657}
+{'_meta': {'type': 'train'}, 'E': 82, 'B': 0, 'Length': 1280, 'Loss': 3.1535879135131837, 'perplexity': 23.436917681090314}
+{'_meta': {'type': 'validation'}, 'E': 82, 'val_loss': np.float64(3.1610995133717856), 'val_ppl': 23.596526367292533}
+{'_meta': {'type': 'train'}, 'E': 83, 'B': 0, 'Length': 1280, 'Loss': 3.149733138084412, 'perplexity': 23.34325939128727}
+{'_meta': {'type': 'validation'}, 'E': 83, 'val_loss': np.float64(3.160069704055786), 'val_ppl': 23.572238952463707}
+{'_meta': {'type': 'train'}, 'E': 84, 'B': 0, 'Length': 1280, 'Loss': 3.1404781222343443, 'perplexity': 23.12517631120961}
+{'_meta': {'type': 'validation'}, 'E': 84, 'val_loss': np.float64(3.15908153851827), 'val_ppl': 23.548957183304253}
+{'_meta': {'type': 'train'}, 'E': 85, 'B': 0, 'Length': 1280, 'Loss': 3.1420494437217714, 'perplexity': 23.162114468340697}
+{'_meta': {'type': 'validation'}, 'E': 85, 'val_loss': np.float64(3.1576530933380127), 'val_ppl': 23.515342802781323}
+{'_meta': {'type': 'train'}, 'E': 86, 'B': 0, 'Length': 1280, 'Loss': 3.1465723752975463, 'perplexity': 23.27018076428336}
+{'_meta': {'type': 'validation'}, 'E': 86, 'val_loss': np.float64(3.1565748850504556), 'val_ppl': 23.490002029057695}
+{'_meta': {'type': 'train'}, 'E': 87, 'B': 0, 'Length': 1280, 'Loss': 3.1476481556892395, 'perplexity': 23.28982428996099}
+{'_meta': {'type': 'validation'}, 'E': 87, 'val_loss': np.float64(3.1554152170817056), 'val_ppl': 23.46277721504217}
+{'_meta': {'type': 'train'}, 'E': 88, 'B': 0, 'Length': 1280, 'Loss': 3.1323738217353823, 'perplexity': 22.939675187413787}
+{'_meta': {'type': 'validation'}, 'E': 88, 'val_loss': np.float64(3.1544512112935386), 'val_ppl': 23.440169860561447}
+{'_meta': {'type': 'train'}, 'E': 89, 'B': 0, 'Length': 1280, 'Loss': 3.1361122131347656, 'perplexity': 23.027528447889825}
+{'_meta': {'type': 'validation'}, 'E': 89, 'val_loss': np.float64(3.153303941090902), 'val_ppl': 23.413293072552694}
+{'_meta': {'type': 'train'}, 'E': 90, 'B': 0, 'Length': 1280, 'Loss': 3.141016721725464, 'perplexity': 23.13912428619922}
+{'_meta': {'type': 'validation'}, 'E': 90, 'val_loss': np.float64(3.1518293221791587), 'val_ppl': 23.378792831407484}
+{'_meta': {'type': 'train'}, 'E': 91, 'B': 0, 'Length': 1280, 'Loss': 3.1365703344345093, 'perplexity': 23.040568253644814}
+{'_meta': {'type': 'validation'}, 'E': 91, 'val_loss': np.float64(3.150296688079834), 'val_ppl': 23.342989140300432}
+{'_meta': {'type': 'train'}, 'E': 92, 'B': 0, 'Length': 1280, 'Loss': 3.13397821187973, 'perplexity': 22.977188078086805}
+{'_meta': {'type': 'validation'}, 'E': 92, 'val_loss': np.float64(3.149350563685099), 'val_ppl': 23.32091421328894}
+{'_meta': {'type': 'train'}, 'E': 93, 'B': 0, 'Length': 1280, 'Loss': 3.1437828302383424, 'perplexity': 23.20377359929848}
+{'_meta': {'type': 'validation'}, 'E': 93, 'val_loss': np.float64(3.1481085618336997), 'val_ppl': 23.29196757427035}
+{'_meta': {'type': 'train'}, 'E': 94, 'B': 0, 'Length': 1280, 'Loss': 3.1373411774635316, 'perplexity': 23.056513593605064}
+{'_meta': {'type': 'validation'}, 'E': 94, 'val_loss': np.float64(3.146568695704142), 'val_ppl': 23.256128662956534}
+{'_meta': {'type': 'train'}, 'E': 95, 'B': 0, 'Length': 1280, 'Loss': 3.131436049938202, 'perplexity': 22.91427957010075}
+{'_meta': {'type': 'validation'}, 'E': 95, 'val_loss': np.float64(3.144840399424235), 'val_ppl': 23.215969895423783}
+{'_meta': {'type': 'train'}, 'E': 96, 'B': 0, 'Length': 1280, 'Loss': 3.1285475730895995, 'perplexity': 22.863600176574693}
+{'_meta': {'type': 'validation'}, 'E': 96, 'val_loss': np.float64(3.1429572105407715), 'val_ppl': 23.172290979730715}
+{'_meta': {'type': 'train'}, 'E': 97, 'B': 0, 'Length': 1280, 'Loss': 3.1260249376297, 'perplexity': 22.79582669572109}
+{'_meta': {'type': 'validation'}, 'E': 97, 'val_loss': np.float64(3.1412840684254966), 'val_ppl': 23.13355286001188}
+{'_meta': {'type': 'train'}, 'E': 98, 'B': 0, 'Length': 1280, 'Loss': 3.1271532654762266, 'perplexity': 22.8223755631947}
+{'_meta': {'type': 'validation'}, 'E': 98, 'val_loss': np.float64(3.1398204962412515), 'val_ppl': 23.099719999978916}
+{'_meta': {'type': 'train'}, 'E': 99, 'B': 0, 'Length': 1280, 'Loss': 3.1219354271888733, 'perplexity': 22.69892335471966}
+{'_meta': {'type': 'validation'}, 'E': 99, 'val_loss': np.float64(3.1379095713297525), 'val_ppl': 23.05562031859184}
+{'_meta': {'type': 'train'}, 'E': 100, 'B': 0, 'Length': 1280, 'Loss': 3.1308049321174622, 'perplexity': 22.910051216241165}
+{'_meta': {'type': 'validation'}, 'E': 100, 'val_loss': np.float64(3.136061350504557), 'val_ppl': 23.01304779481243}
