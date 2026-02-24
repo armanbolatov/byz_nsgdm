@@ -1,49 +1,42 @@
-# Byzantine-Robust Learning on Heterogeneous Datasets via Bucketing
+# Byz-NSGDM: Byzantine-Robust Normalized SGD with Momentum
 
-In Byzantine robust distributed or federated learning, a central server wants to train a machine learning model over data distributed across multiple workers. However, a fraction of these workers may deviate from the prescribed algorithm and send arbitrary messages. While this problem has received significant attention recently, most current defenses assume that the workers have identical data. For realistic cases when the data across workers are heterogeneous (`noniid`), we design new attacks which circumvent current defenses, leading to significant loss of performance. We then propose a simple bucketing scheme that adapts existing robust algorithms to heterogeneous datasets at a negligible computational cost. We also theoretically and experimentally validate our approach, showing that combining bucketing with existing robust algorithms is effective against challenging attacks. Our work is the first to establish guaranteed convergence for the non-iid Byzantine robust problem under realistic assumptions.
+This repository contains the code for our paper on Byzantine-robust optimization under $(L_0, L_1)$-smoothness. We propose **Byz-NSGDM**, which combines gradient normalization with momentum and robust aggregation to achieve convergence guarantees under generalized smoothness conditions.
 
-# Table of contents
+This is a fork of [epfml/byzantine-robust-noniid-optimizer](https://github.com/epfml/byzantine-robust-noniid-optimizer). We are grateful to **Sai Praneeth Karimireddy**, **Lie He**, and **Martin Jaggi** from the [EPFML lab](https://www.epfl.ch/labs/mlo/) for their clean and reproducible codebase.
 
-- [Structure of code](#Code-organization)
-- [Reproduction](#Reproduction)
-- [License](#license)
-- [Reference](#Reference)
+## Code organization
 
-# Code organization
+- `codes/` — Core framework (workers, server, simulator, aggregators, attacks, samplers)
+- `exp{1-10}.py` — Launcher scripts for MNIST experiments
+- `exp11/` — Synthetic quartic optimization ($f(x) = \|x\|^4$)
+- `exp12/` — Character-level language modeling (Shakespeare, small GPT)
+- `outputs/` — Experiment results
 
-The structure of the repository is as follows:
-- `codes/`
-  - Source code.
-- `outputs/`
-  - Store the output of the launcher scripts.
-- `exp{}.py`: The launcher script for experiments.
-# Reproduction
+## Reproduction
 
-To reproduce the results in the paper, do the following steps
+1. Install dependencies: `pip install -r requirements.txt`
+2. Run experiments:
+```bash
+bash run.sh              # MNIST experiments (interactive menu)
+bash run_ablation.sh     # Momentum/LR ablation study
+cd exp11 && python main.py   # Synthetic quartic optimization
+cd exp12 && bash run_exp12.sh   # Shakespeare LM
+```
+3. Results are saved to the corresponding folders under `outputs/`
 
-1. Add `codes/` to environment variable `PYTHONPATH`
-2. Install the dependencies: `pip install -r requirements.txt`
-3. Run `bash run.sh` and select option 2 to 9 to generate the code.
-4. The output will be saved to the corresponding folders under `outputs`
-
-Note that if the GPU memory is small (e.g. less than 16 GB), then running the previous commands may raise insufficient exception. In this case, one can decrease the level parallelism in the script by changing the order of loops and reduce the number of parallel processes. 
-
-
-# License
+## License
 
 This repo is covered under [The MIT License](LICENSE).
 
+## Acknowledgments
 
-# Reference
-If you use this code, please cite the following paper
+This codebase builds on the work of Karimireddy et al.:
 
 ```
-@misc{karimireddy2021byzantinerobust,
-      title={Byzantine-Robust Learning on Heterogeneous Datasets via Bucketing}, 
+@inproceedings{karimireddy2022byzantinerobust,
+      title={Byzantine-Robust Learning on Heterogeneous Datasets via Bucketing},
       author={Sai Praneeth Karimireddy and Lie He and Martin Jaggi},
-      year={2021},
-      eprint={2006.09365},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+      booktitle={International Conference on Machine Learning (ICML)},
+      year={2022}
 }
 ```
